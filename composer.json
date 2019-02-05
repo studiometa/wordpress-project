@@ -1,5 +1,6 @@
 {
     "name": "studiometa/wordpress-project",
+    "version": "1.0.0-alpha.0",
     "description": "Composer template to create a Wordpress project.",
     "type": "project",
     "require": {
@@ -23,7 +24,7 @@
     "extra": {
         "installer-paths": {
             "web/wp-content/themes/{$name}": ["type:wordpress-theme"],
-            "web/wp-content/plugins/{$name}": ["type:wordpress-plugin"],
+            "web/wp-content/plugins/{$name}": ["type:wordpress-plugin"]
         }
     }
 }
