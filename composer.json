@@ -1,0 +1,29 @@
+{
+    "name": "studiometa/wordpress-project",
+    "description": "Composer template to create a Wordpress project.",
+    "type": "project",
+    "require": {
+        "vlucas/phpdotenv": "^3.3",
+        "wp-cli/wp-cli": "^2.1",
+        "wp-cli/db-command": "^2.0"
+    },
+    "require-dev": {
+        "wp-coding-standards/wpcs": "^2.0"
+    },
+    "autoload": {
+        "files": ["load.environment.php"]
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Studio Meta",
+            "email": "agence@studiometa.fr"
+        }
+    ],
+    "extra": {
+        "installer-paths": {
+            "web/wp-content/themes/{$name}": ["type:wordpress-theme"],
+            "web/wp-content/plugins/{$name}": ["type:wordpress-plugin"],
+        }
+    }
+}
