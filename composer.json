@@ -1,6 +1,6 @@
 {
-    "name": "studiometa/wordpress-project",
-    "version": "1.0.0-alpha.0",
+    "name": "@studiometa/wordpress-project",
+    "version": "1.0.0-alpha.1",
     "description": "Composer template to create a Wordpress project.",
     "type": "project",
     "require": {
