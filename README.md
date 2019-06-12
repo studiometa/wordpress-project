@@ -13,7 +13,7 @@ $ bin/get-wp-salts.sh # You can use this script to get auto-generated salt keys
 $ nano .env # Edit environment variables
 $ bin/generate-wp-config.sh # Generate wp-config.php file
 
-$ composer install -o
+$ composer install
 $ ./vendor/bin/wp --info # Test your WP CLI installation
 $ ./vendor/bin/wp core download --path=web/ --locale=fr_FR # Install a fresh Wordpress
 $ ./vendor/bin/wp core install --prompt=url,title,admin_user,admin_email,admin_password --skip-email --path=web/
