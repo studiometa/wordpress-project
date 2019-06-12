@@ -16,7 +16,7 @@ $ bin/generate-wp-config.sh # Generate wp-config.php file
 $ composer install -o
 $ ./vendor/bin/wp --info # Test your WP CLI installation
 $ ./vendor/bin/wp core download --path=web/ --locale=fr_FR # Install a fresh Wordpress
-$ ./vendor/bin/wp core install --url=local.wordpress-skeleton.com --title=Skeleton --admin_user=wordpress_skeleton --prompt=admin_password --admin_email=lucas.s@studiometa.fr --skip-email --path=web/
+$ ./vendor/bin/wp core install --prompt=url,title,admin_user,admin_email,admin_password --skip-email --path=web/
 $ ./vendor/bin/wp core is-installed --path=web/ # Test your Wordpress configuration (if return empty, your Wordpress is correctly installed!)
 ```
 
