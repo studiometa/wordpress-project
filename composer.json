@@ -26,6 +26,11 @@
         "db:export": "cd web/ && wp db export - --add-drop-table | gzip > ../data/`date +\"%Y%m%d-%H%M\"`.sql.gz",
         "db:import": "cd web/ && gzip -c -d `find ../data -type f -name \"*.gz\" -print0 | xargs -0 stat -f \"%m %N\" | sort -rn | head -1 | cut -f2- -d\" \"` | ../vendor/bin/wp db import -"
     },
+    "config": {
+        "platform": {
+          "php": "7.0"
+        }
+    },
     "extra": {
         "installer-paths": {
             "web/wp-content/themes/{$name}": [
