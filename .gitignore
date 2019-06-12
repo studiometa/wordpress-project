@@ -2,3 +2,5 @@
 /vendor
 /wp-config.php
 /web
+/data/*
+!/data/.gitkeep
