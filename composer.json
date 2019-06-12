@@ -1,0 +1,51 @@
+{
+    "name": "studiometa/wordpress-skeleton",
+    "description": "Wordpress skeleton",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lucas Simeon",
+            "email": "hello@simeonlucas.fr"
+        }
+    ],
+    "require-dev": {
+        "wp-cli/wp-cli-bundle": "^2.2",
+        "vlucas/phpdotenv": "^3.3"
+    },
+    "repositories":[
+        {
+            "type":"composer",
+            "url":"https://wpackagist.org"
+        }
+    ],
+    "scripts": {
+        "generate-config": [
+            "vendor/scottjs/wp-dotenv/generate-config.sh"
+        ],
+        "db:export": "cd web/ && wp db export - --add-drop-table | gzip > ../data/`date +\"%Y%m%d-%H%M\"`.sql.gz",
+        "db:import": "cd web/ && gzip -c -d `find ../data -type f -name \"*.gz\" -print0 | xargs -0 stat -f \"%m %N\" | sort -rn | head -1 | cut -f2- -d\" \"` | ../vendor/bin/wp db import -"
+    },
+    "config": {
+        "platform": {
+          "php": "7.0"
+        }
+    },
+    "extra": {
+        "installer-paths": {
+            "web/wp-content/themes/{$name}": [
+
+                "type:wordpress-theme"
+            ],
+            "web/wp-content/plugins/{$name}": [
+                "type:wordpress-plugin"
+            ],
+            "web/wp-content/mu-plugins/{$name}": [
+                "type:wordpress-muplugin"
+            ]
+        },
+        "wordpress-install-dir": "web"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
