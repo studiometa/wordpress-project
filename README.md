@@ -1,6 +1,6 @@
 # Wordpress skeleton
 ## Prerequisites
-- PHP
+- PHP >= 7.0
 - Composer
 
 ## Usage
