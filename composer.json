@@ -1,30 +1,82 @@
 {
     "name": "studiometa/wordpress-project",
-    "version": "1.0.0-alpha.2",
+    "version": "1.0.0-alpha.3",
     "description": "Composer template to create a Wordpress project.",
-    "type": "project",
-    "require": {
-        "vlucas/phpdotenv": "^3.3",
-        "wp-cli/wp-cli": "^2.1",
-        "wp-cli/db-command": "^2.0"
-    },
-    "require-dev": {
-        "wp-coding-standards/wpcs": "^2.0"
-    },
-    "autoload": {
-        "files": ["load.environment.php"]
-    },
-    "license": "MIT",
     "authors": [
         {
             "name": "Studio Meta",
             "email": "agence@studiometa.fr"
         }
     ],
-    "extra": {
-        "installer-paths": {
-            "web/wp-content/themes/{$name}": ["type:wordpress-theme"],
-            "web/wp-content/plugins/{$name}": ["type:wordpress-plugin"]
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "vlucas/phpdotenv": "^3.4",
+        "johnpbloch/wordpress": "^5.2",
+        "lkwdwrd/wp-muplugin-loader": "^1.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.4",
+        "wp-coding-standards/wpcs": "^2.1",
+        "wp-cli/wp-cli-bundle": "^2.2",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/tabrisrp/wp-background-processing"
         }
-    }
+    ],
+    "scripts": {
+        "db:export": "bin/db-export.sh",
+        "db:import": "bin/db-import.sh",
+        "post-install-cmd": [
+            "bin/cleanup-composer-install.sh",
+            "bin/create-symlinks.sh"
+        ],
+        "post-update-cmd": [
+            "bin/cleanup-composer-install.sh",
+            "bin/create-symlinks.sh"
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "7.0"
+        }
+    },
+    "extra": {
+        "installer-types": [
+            "library",
+            "wordpress-core",
+            "wordpress-plugin",
+            "wordpress-theme",
+            "wordpress-muplugin",
+            "wordpress-dropin"
+        ],
+        "installer-paths": {
+            "web/": [
+                "type:wordpress-core"
+            ],
+            "web/wp-content/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ],
+            "web/wp-content/themes/{$name}/": [
+                "type:wordpress-theme"
+            ],
+            "web/wp-content/mu-plugins/{$name}/": [
+                "type:wordpress-muplugin"
+            ],
+            "web/wp-content/{$name}/": [
+                "type:wordpress-dropin"
+            ]
+        },
+        "wordpress-install-dir": "web"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
