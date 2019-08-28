@@ -13,52 +13,12 @@ THEMES_PATH="$PROJECT_ROOT/web/wp-content/themes"
 
 echo ""
 
-# Remove akismet
-echo -e "🗑  ${WHITE}Removing ${BLUE}${PLUGINS_PATH/$PROJECT_ROOT/}/akismet${WHITE}...${NC}"
-if [ -e "$PLUGINS_PATH/akismet" ]; then
-	rm -r "$PLUGINS_PATH/akismet"/
-	echo -e "👍 ${BLUE}${PLUGINS_PATH/$PROJECT_ROOT/}/akismet ${WHITE}removed!${NC}"
+# Remove unused wp-content/ folder
+echo -e "🗑  ${WHITE}Removing ${BLUE}web/app/wp-content${WHITE}...${NC}"
+if [ -e "$PROJECT_ROOT/web/app/wp-content" ]; then
+	rm -r "$PROJECT_ROOT/web/app/wp-content"/
+	echo -e "👍 ${BLUE}web/app/wp-content ${WHITE}removed!${NC}"
 else
-	echo -e "👍 ${BLUE}${PLUGINS_PATH/$PROJECT_ROOT/}/akismet ${WHITE}already removed!${NC}"
-fi
-echo ""
-
-# Remove hello-dolly
-echo -e "🗑  ${WHITE}Removing ${BLUE}${PLUGINS_PATH/$PROJECT_ROOT/}/hello.php${WHITE}...${NC}"
-if [ -e "$PLUGINS_PATH/hello.php" ]; then
-	rm -r "$PLUGINS_PATH/hello.php"
-	echo -e "👍 ${BLUE}${PLUGINS_PATH/$PROJECT_ROOT/}/hello.php ${WHITE}removed!${NC}"
-else
-	echo -e "👍 ${BLUE}${PLUGINS_PATH/$PROJECT_ROOT/}/hello.php ${WHITE}already removed!${NC}"
-fi
-echo ""
-
-# Remove twentynineteen
-echo -e "🗑  ${WHITE}Removing ${BLUE}${THEMES_PATH/$PROJECT_ROOT/}/twentynineteen${WHITE}...${NC}"
-if [ -e "$THEMES_PATH/twentynineteen" ]; then
-	rm -r "$THEMES_PATH/twentynineteen"
-	echo -e "👍 ${BLUE}${THEMES_PATH/$PROJECT_ROOT/}/twentynineteen ${WHITE}removed!${NC}"
-else
-	echo -e "👍 ${BLUE}${THEMES_PATH/$PROJECT_ROOT/}/twentynineteen ${WHITE}already removed!${NC}"
-fi
-echo ""
-
-# Remove twentysixteen
-echo -e "🗑  ${WHITE}Removing ${BLUE}${THEMES_PATH/$PROJECT_ROOT/}/twentysixteen${WHITE}...${NC}"
-if [ -e "$THEMES_PATH/twentysixteen" ]; then
-	rm -r "$THEMES_PATH/twentysixteen"
-	echo -e "👍 ${BLUE}${THEMES_PATH/$PROJECT_ROOT/}/twentysixteen ${WHITE}removed!${NC}"
-else
-	echo -e "👍 ${BLUE}${THEMES_PATH/$PROJECT_ROOT/}/twentysixteen ${WHITE}already removed!${NC}"
-fi
-echo ""
-
-# Remove twentyseventeen
-echo -e "🗑  ${WHITE}Removing ${BLUE}${THEMES_PATH/$PROJECT_ROOT/}/twentyseventeen${WHITE}...${NC}"
-if [ -e "$THEMES_PATH/twentyseventeen" ]; then
-	rm -r "$THEMES_PATH/twentyseventeen"
-	echo -e "👍 ${BLUE}${THEMES_PATH/$PROJECT_ROOT/}/twentyseventeen ${WHITE}removed!${NC}"
-else
-	echo -e "👍 ${BLUE}${THEMES_PATH/$PROJECT_ROOT/}/twentyseventeen ${WHITE}already removed!${NC}"
+	echo -e "👍 ${BLUE}web/app/wp-content ${WHITE}already removed!${NC}"
 fi
 echo ""

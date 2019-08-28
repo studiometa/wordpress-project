@@ -13,7 +13,8 @@
     "require": {
         "vlucas/phpdotenv": "^3.4",
         "johnpbloch/wordpress": "^5.2",
-        "lkwdwrd/wp-muplugin-loader": "^1.0"
+        "lkwdwrd/wp-muplugin-loader": "^1.0",
+        "johnpbloch/wordpress-core-installer": "^1.0"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.4",
@@ -35,12 +36,10 @@
         "db:export": "bin/db-export.sh",
         "db:import": "bin/db-import.sh",
         "post-install-cmd": [
-            "bin/cleanup-composer-install.sh",
-            "bin/create-symlinks.sh"
+            "bin/cleanup-composer-install.sh"
         ],
         "post-update-cmd": [
-            "bin/cleanup-composer-install.sh",
-            "bin/create-symlinks.sh"
+            "bin/cleanup-composer-install.sh"
         ]
     },
     "config": {
@@ -52,16 +51,12 @@
     "extra": {
         "installer-types": [
             "library",
-            "wordpress-core",
             "wordpress-plugin",
             "wordpress-theme",
             "wordpress-muplugin",
             "wordpress-dropin"
         ],
         "installer-paths": {
-            "web/": [
-                "type:wordpress-core"
-            ],
             "web/wp-content/plugins/{$name}/": [
                 "type:wordpress-plugin"
             ],
@@ -75,7 +70,7 @@
                 "type:wordpress-dropin"
             ]
         },
-        "wordpress-install-dir": "web"
+        "wordpress-install-dir": "web/wp/"
     },
     "minimum-stability": "dev",
     "prefer-stable": true

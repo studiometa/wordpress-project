@@ -14,8 +14,14 @@ node_modules/
 /data/*
 !/data/.gitkeep
 
-# Ignore composer install web/ directory
-/web/
+# Ignore Wordpress install directory
+/web/wp/
+
+# Ignore mu-plugins, plugins and themes installed via composer
+# but do not ignore custom ones for the current project
+/web/wp-content/*/*
+!/web/wp-content/*/.gitkeep
+!/web/wp-content/*/custom-*
 
 # Ignore .env files as they are personal
 .env

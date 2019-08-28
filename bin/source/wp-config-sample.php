@@ -104,17 +104,15 @@ if(getenv('APP_ENV') !== 'local') {
 
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
-    define('ABSPATH', dirname(__FILE__) . getenv('APP_CORE') != '' ? getenv('APP_CORE') : '/');
+    define('ABSPATH', dirname(__FILE__) . '/wp');
 
 /** Automatically set paths */
 define('WP_HOME', (getenv('APP_SSL') == 'true' ? 'https://' : 'http://') . getenv('APP_HOST'));
-define('WP_SITEURL', WP_HOME . getenv('APP_CORE'));
+define('WP_SITEURL', WP_HOME . '/wp');
 
 /** Configure directory paths if WP core is in a different directory */
-if(getenv('APP_CORE') != '') {
-    define('WP_CONTENT_URL', WP_HOME . '/wp-content');
-    define('WP_CONTENT_DIR', realpath(ABSPATH.'../wp-content/'));
-}
+define('WP_CONTENT_URL', WP_HOME . '/wp-content');
+define('WP_CONTENT_DIR', realpath(ABSPATH.'../wp-content/'));
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
