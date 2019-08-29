@@ -18,3 +18,6 @@ Custom plugins, mu-plugins and themes must be stored in the `src/` folder and wi
 - https://github.com/drupal-composer/drupal-project
 - https://deliciousbrains.com/wordpress-must-use-plugins-composer/
 - https://github.com/wordplate/wordplate
+- https://github.com/johnpbloch/wordpress-core-installer
+- https://composer.rarst.net/recipe/site-stack/
+- https://roots.io/guides/acf-pro-as-a-composer-dependency-with-encrypted-license-key/
