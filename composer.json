@@ -36,10 +36,12 @@
         "db:export": "bin/db-export.sh",
         "db:import": "bin/db-import.sh",
         "post-install-cmd": [
-            "bin/cleanup-composer-install.sh"
+            "bin/cleanup-composer-install.sh",
+            "bin/generate-wp-config.sh"
         ],
         "post-update-cmd": [
-            "bin/cleanup-composer-install.sh"
+            "bin/cleanup-composer-install.sh",
+            "bin/generate-wp-config.sh"
         ]
     },
     "config": {

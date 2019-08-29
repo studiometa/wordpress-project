@@ -23,5 +23,6 @@ node_modules/
 !/web/wp-content/*/.gitkeep
 !/web/wp-content/*/custom-*
 
-# Ignore .env files as they are personal
+# Ignore .env and config files as they are personal
 .env
+/web/wp-config.php

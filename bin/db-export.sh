@@ -1,25 +1,27 @@
 #!/bin/bash
 
-# Colors
-WHITE='\033[1;37m'
-GREEN='\033[0;32m'
-BLUE='\033[0;34m'
-NC='\033[0m'
-
-# Paths
+# Config
 PROJECT_ROOT=$( cd "$(dirname "${BASH_SOURCE[0]}")/.." ; pwd -P )
+source $PROJECT_ROOT/bin/utils/colors.sh
+
 DATE=$(date +"%Y%m%d-%H%M")
 FILENAME="$DATE.sql.gz"
 
 # Output result
-echo "#####################################################"
-echo "####### STUDIO META WORDPRESS DATABASE EXPORT #######"
-echo "#####################################################"
 echo ""
-echo -e "💾 ${WHITE}Exporting database...${NC}"
+echo -e "  ${BLACK}#####################################################${COLOR_OFF}"
+echo -e "  ${BLACK}####### ${WHITE}STUDIO META WORDPRESS DATABASE EXPORT${BLACK} #######${COLOR_OFF}"
+echo -e "  ${BLACK}#####################################################${COLOR_OFF}"
+echo ""
+echo -e "  💾 ${WHITE}Exporting database...${COLOR_OFF}"
 
 cd $PROJECT_ROOT
-./vendor/bin/wp db export - --add-drop-table | gzip > "$PROJECT_ROOT/data/$DATE.sql.gz"
+{
+  $(./vendor/bin/wp config path) \
+  && $(./vendor/bin/wp db export - --add-drop-table | gzip > "$PROJECT_ROOT/data/$DATE.sql.gz") \
+  && echo -e "  👍 ${WHITE}Database has been successfully exported to ${BLUE}data/$DATE.sql.gz${COLOR_OFF}"
+} || {
+  echo -e "  🚫 ${WHITE}An error occured... Check the logs above to find out why.${COLOR_OFF}"
+}
 
-echo -e "👍 ${WHITE}Database has been successfully exported to ${BLUE}data/$DATE.sql.gz${NC}"
 echo ""
