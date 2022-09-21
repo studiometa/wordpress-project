@@ -1,17 +1,8 @@
 {% extends 'layouts/base.twig' %}
 
 {% block content %}
-  <div class="content-wrapper">
-    <article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
-      <section class="article-content">
-        <h1 class="article-h1">
-          {{ post.title }}
-        </h1>
-        <div class="article-body">
-          {{ post.content|raw }}
-        </div>
-      </section>
-    </article>
-  </div>
-  <!-- /content-wrapper -->
+  {% for item in post.meta('builder') %}
+    {% set block_name = item.acf_fc_layout %}
+    {% include 'organisms/' ~ block_name ~ '.twig' with { block: item } only %}
+  {% endfor %}
 {% endblock %}
