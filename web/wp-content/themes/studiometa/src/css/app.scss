@@ -1,0 +1,19 @@
+/* Globals
+\*============================================================================*/
+
+@import 'tailwindcss/base';
+@import './base';
+
+/* Components
+\*============================================================================*/
+
+@import 'tailwindcss/components';
+@import './atoms';
+@import './molecules';
+@import './organisms';
+
+/* Utilities
+\*============================================================================*/
+
+@import 'tailwindcss/utilities';
+@import './utilities';

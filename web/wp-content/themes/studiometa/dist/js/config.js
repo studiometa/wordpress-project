@@ -1,0 +1,2 @@
+(self.webpackChunkmodern=self.webpackChunkmodern||[]).push([[723],{646:(n,s,e)=>{e.d(s,{r:()=>o});const o=()=>!window.location.hostname.startsWith("www.")}},n=>{var s;s=646,n(n.s=s)}]);
+//# sourceMappingURL=config.js.map

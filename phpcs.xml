@@ -1,7 +1,16 @@
 <?xml version="1.0"?>
-<ruleset name="TheInvisibleCollection">
-   <!-- Skip seed data -->
+<ruleset name="wp-studiometa">
+  <!-- Define file and folders to lint -->
+  <file>./web/wp-content/themes/studiometa/</file>
+  <file>./web/wp-content/mu-plugins/studiometa-plugin-disabler/</file>
+  <!-- <file>./web/wp-content/plugins/studiometa-.../</file> -->
+  <!-- <file>./web/wp-content/mu-plugins/studiometa-.../</file> -->
+
+  <!-- Skip seed data -->
   <exclude-pattern>/data/</exclude-pattern>
+
+  <!-- Skip LocalValetDriver -->
+  <exclude-pattern>LocalValetDriver.php</exclude-pattern>
 
   <!-- Don't check composer dependencies -->
   <exclude-pattern>/vendor/</exclude-pattern>
@@ -19,5 +28,29 @@
   <rule ref="WordPress">
     <!-- There are numerous cases where we want to override WP globals -->
     <exclude name="WordPress.WP.GlobalVariablesOverride" />
+  </rule>
+
+  <!-- Disable class-classname.php file naming for app folder -->
+  <rule ref="WordPress.Files.FileName.InvalidClassFileName">
+    <exclude-pattern>/app/</exclude-pattern>
+    <exclude-pattern>/studiometa-plugin-disabler/studiometa-plugin-disabler.php</exclude-pattern>
+  </rule>
+
+  <!-- Allow UpperCaseClasses file names in app folder -->
+  <rule ref="WordPress.Files.FileName.NotHyphenatedLowercase">
+    <exclude-pattern>/app/</exclude-pattern>
+  </rule>
+
+  <!-- Run against the PHPCompatibilityWP ruleset -->
+  <rule ref="PHPCompatibilityWP" />
+
+  <!-- Check for cross-version support for PHP 7.3 and higher -->
+  <config name="testVersion" value="7.3-"/>
+
+  <!-- Allow usage of `{@inheritdoc}` in doc blocks -->
+  <rule ref="Squiz.Commenting.FunctionComment">
+    <properties>
+      <property name="skipIfInheritdoc" value="true" />
+    </properties>
   </rule>
 </ruleset>
