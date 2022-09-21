@@ -1,0 +1,12 @@
+# Assets management for WordPress
+# @see https://github.com/studiometa/wp-assets/tree/feature/v2#readme
+
+# Assets loaded on all templates
+all:
+  css:
+    app: dist/css/app.css
+  js:
+    manifest: dist/manifest.js
+    vendors: dist/vendors.js
+    app: dist/js/app.js
+

@@ -1,82 +1,102 @@
 {
-    "name": "studiometa/wordpress-project",
-    "version": "1.0.0-alpha5",
-    "description": "Composer template to create a Wordpress project.",
-    "authors": [
-        {
-            "name": "Studio Meta",
-            "email": "agence@studiometa.fr"
-        }
+  "name": "studiometa/wordpress-project",
+  "version": "2.0.0",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Studio Meta",
+      "email": "agence@studiometa.fr"
+    }
+  ],
+  "license": "MIT",
+  "require": {
+    "php": "^7.3",
+    "vlucas/phpdotenv": "^3.4",
+    "johnpbloch/wordpress": "6.*",
+    "timber/timber": "^1.20",
+    "studiometa/wp-toolkit": "^1.0@alpha",
+    "wp-media/wp-rocket": "^3.11",
+    "wpackagist-plugin/classic-editor": "^1.6",
+    "wpackagist-plugin/seo-by-rank-math": "^1.0",
+    "studiometa/advanced-custom-fields-pro": "^5.12",
+    "stoutlogic/acf-builder": "^1.12",
+    "boxuk/wp-muplugin-loader": "^2.0",
+    "djboris88/twig-commented-include": "^1.2",
+    "studiometa/ui": "^0.2.7"
+  },
+  "require-dev": {
+    "wpackagist-plugin/query-monitor": "^3.9",
+    "squizlabs/php_codesniffer": "^3.7",
+    "wp-coding-standards/wpcs": "^2.3",
+    "wp-cli/wp-cli-bundle": "^2.6",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
+    "phpstan/phpstan": "^1.7",
+    "szepeviktor/phpstan-wordpress": "^1.1",
+    "satesh/phpcs-gitlab-report": "^1.0",
+    "phpcompatibility/phpcompatibility-wp": "^2.1",
+    "roave/security-advisories": "dev-latest",
+    "mikehaertl/php-shellcommand": "^1.6"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "scripts": {
+    "post-create-project-cmd": [
+      "@php scripts/create-project.php"
     ],
-    "license": "MIT",
-    "type": "project",
-    "require": {
-        "vlucas/phpdotenv": "^3.4",
-        "johnpbloch/wordpress": "^5.2",
-        "lkwdwrd/wp-muplugin-loader": "^1.0"
-    },
-    "require-dev": {
-        "squizlabs/php_codesniffer": "^3.4",
-        "wp-coding-standards/wpcs": "^2.1",
-        "wp-cli/wp-cli-bundle": "^2.2",
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0"
-    },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://wpackagist.org"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/tabrisrp/wp-background-processing"
-        }
+    "post-install-cmd": [
+      "rm -rf ./web/wp/wp-content",
+      "cp config/scaffold/wp-config-sample.php web/wp-config.php"
     ],
-    "scripts": {
-        "db:export": "bin/db-export.sh",
-        "db:import": "bin/db-import.sh",
-        "post-install-cmd": [
-            "bin/cleanup-composer-install.sh",
-            "bin/create-symlinks.sh"
-        ],
-        "post-update-cmd": [
-            "bin/cleanup-composer-install.sh",
-            "bin/create-symlinks.sh"
-        ]
+    "post-update-cmd": [
+      "rm -rf ./web/wp/wp-content",
+      "cp config/scaffold/wp-config-sample.php web/wp-config.php"
+    ],
+    "phpstan": "phpstan analyse --memory-limit=512M",
+    "test": "echo 'No test specified' && exit 0",
+    "phpcs": "phpcs -s --colors --extensions=php --standard=./phpcs.xml"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "boxuk/wp-muplugin-loader": true,
+      "johnpbloch/wordpress-core-installer": true,
+      "composer/installers": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Studiometa\\": "web/wp-content/themes/studiometa/app"
+    }
+  },
+  "extra": {
+    "installer-types": [
+      "library",
+      "wordpress-plugin",
+      "wordpress-theme",
+      "wordpress-muplugin",
+      "wordpress-dropin"
+    ],
+    "installer-paths": {
+      "web/wp-content/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "web/wp-content/themes/{$name}/": [
+        "type:wordpress-theme"
+      ],
+      "web/wp-content/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin"
+      ],
+      "web/wp-content/{$name}/": [
+        "type:wordpress-dropin"
+      ]
     },
-    "config": {
-        "optimize-autoloader": true,
-        "platform": {
-            "php": "7.0"
-        }
-    },
-    "extra": {
-        "installer-types": [
-            "library",
-            "wordpress-core",
-            "wordpress-plugin",
-            "wordpress-theme",
-            "wordpress-muplugin",
-            "wordpress-dropin"
-        ],
-        "installer-paths": {
-            "web/": [
-                "type:wordpress-core"
-            ],
-            "web/wp-content/plugins/{$name}/": [
-                "type:wordpress-plugin"
-            ],
-            "web/wp-content/themes/{$name}/": [
-                "type:wordpress-theme"
-            ],
-            "web/wp-content/mu-plugins/{$name}/": [
-                "type:wordpress-muplugin"
-            ],
-            "web/wp-content/{$name}/": [
-                "type:wordpress-dropin"
-            ]
-        },
-        "wordpress-install-dir": "web"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "wordpress-install-dir": "web/wp/"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }

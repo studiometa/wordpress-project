@@ -1,0 +1,193 @@
+stages:
+- Install dependencies
+- Code Quality
+- Code Quality Report
+
+# Global workflow config
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+
+variables:
+  # Needed for NPM Cache
+  npm_config_cache: "$CI_PROJECT_DIR/.npm"
+  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/.cache/Cypress"
+
+########################################################################
+#  BEGIN CACHE                                                         #
+########################################################################
+
+.NPM Cache: &npm_cache
+  key: "npm-cache-$CI_COMMIT_REF_SLUG"
+  paths:
+    - .npm
+    - node_modules
+  policy: pull-push
+
+.Composer Cache: &composer_cache
+  key: "composer-cache-$CI_COMMIT_REF_SLUG"
+  paths:
+    - composer.phar
+    - vendor
+    - web/wp
+  policy: pull-push
+
+.NPM default config: &npm_default_config
+  image: node:14
+  cache:
+    <<: *npm_cache
+    policy: pull
+  rules:
+    - changes:
+        - package.json
+        - package-lock.json
+        - meta.config.js
+        - .babelrc.js
+        - .eslintrc.js
+        - .postcssrc.js
+        - .prettierrc.js
+        - .stylelintrc.js
+        - tailwind.config.js
+        - .gitlab-ci.yml
+        - web/wp-content/themes/**/*.{js,scss,vue}
+
+.Composer default config: &composer_default_config
+  image: php:7.3
+  before_script:
+    - apt-get update
+    - apt-get install -y git wget unzip zip
+    - wget https://raw.githubusercontent.com/composer/getcomposer.org/6e874537c7ff87f03f99dc8dea1f2c48e4274da3/web/installer -O - -q | php -- --quiet --version=1.10.19
+    - php -d memory_limit=-1 composer.phar install --prefer-dist --no-progress --no-suggest
+  cache:
+    <<: *composer_cache
+    policy: pull
+  rules:
+    - changes:
+        - composer.json
+        - composer.lock
+        - phpcs.xml
+        - phpstan.neon
+        - .gitlab-ci.yml
+        - bin/**/*
+        - web/wp-content/{plugins,mu-plugins,themes}/**/*.php
+
+########################################################################
+#  END CACHE                                                           #
+########################################################################
+
+########################################################################
+#  BEGIN INSTALL                                                       #
+########################################################################
+
+NPM Install:
+  <<: *npm_default_config
+  stage: Install dependencies
+  cache:
+    <<: *npm_cache
+  script:
+    - npm install --no-optional --no-audit --no-fund
+
+Composer Install:
+  <<: *composer_default_config
+  stage: Install dependencies
+  cache:
+    <<: *composer_cache
+  script:
+    - php -d memory_limit=-1 composer.phar install --prefer-dist --no-progress --no-suggest
+
+########################################################################
+#  END INSTALL                                                         #
+########################################################################
+
+########################################################################
+#  BEGIN CODE QUALITY                                                  #
+########################################################################
+
+.Code Quality Artifacts: &code_quality_artifacts
+  artifacts:
+    when: on_failure
+    expire_in: 1 week
+    untracked: true
+
+PHPCS:
+  <<: *composer_default_config
+  <<: *code_quality_artifacts
+  stage: Code Quality
+  needs:
+    - Composer Install
+  script:
+    - php composer.phar run phpcs -- --report=\\Satesh\\Phpcs\\GitLabReport --report-file=gl-phpcs-codequality.json
+
+PHPStan:
+  <<: *composer_default_config
+  <<: *code_quality_artifacts
+  stage: Code Quality
+  needs:
+    - Composer Install
+  script:
+    - php composer.phar run phpstan -- --error-format=gitlab > gl-phpstan-codequality.json
+
+ESLint:
+  <<: *npm_default_config
+  <<: *code_quality_artifacts
+  stage: Code Quality
+  variables:
+    ESLINT_CODE_QUALITY_REPORT: gl-eslint-codequality.json
+  needs:
+    - NPM Install
+  script:
+    - npm run lint:scripts -- --format gitlab
+
+StyleLint:
+  <<: *npm_default_config
+  <<: *code_quality_artifacts
+  stage: Code Quality
+  variables:
+    STYLELINT_CODE_QUALITY_REPORT: gl-stylelint-codequality.json
+  needs:
+    - NPM Install
+  script:
+    - npm run lint:styles -- --custom-formatter=node_modules/stylelint-formatter-gitlab
+
+Prettier Twig:
+  <<: *npm_default_config
+  stage: Code Quality
+  variables:
+    PRETTIER_CODE_QUALITY_REPORT: gl-prettier-codequality.json
+  needs:
+    - NPM Install
+  script:
+    - ./node_modules/.bin/prettier-formatter-gitlab 'npm run lint:templates'
+
+
+########################################################################
+#  END CODE QUALITY                                                    #
+########################################################################
+
+
+########################################################################
+#  START CODE QUALITY REPORT                                           #
+########################################################################
+
+Generate Code Quality Report:
+  image: debian:stable
+  stage: Code Quality Report
+  when: always
+  before_script:
+    - apt-get update
+    - apt-get install -y wget
+    - wget -qO jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
+    - chmod +x ./jq
+    - cp jq /usr/bin
+  script:
+    - find . -name 'gl-*-codequality.json' -exec jq -s '[.[][]]' {} + > gl-codequality.json
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - gl-codequality.json
+    reports:
+      codequality: gl-codequality.json
+
+########################################################################
+#  END CODE QUALITY REPORT                                             #
+########################################################################

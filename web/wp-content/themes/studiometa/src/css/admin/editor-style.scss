@@ -1,0 +1,16 @@
+/*------------------------------------*
+  TinyMCE Editor style
+*------------------------------------*/
+
+@import '../config';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+// Main parent of the TinyMCE wysiwyg Editor.
+.mce-content-body {
+  // Add nice padding.
+  padding: 1.5rem !important;
+
+  // Custom wysiwyg code goes here.
+}
