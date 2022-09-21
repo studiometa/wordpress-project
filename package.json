@@ -23,19 +23,19 @@
     "@studiometa/prettier-formatter-gitlab": "^1.1.2",
     "@studiometa/stylelint-config": "^3.0.0",
     "@studiometa/tailwind-config": "^2.0.2",
-    "@studiometa/webpack-config": "^4.0.1",
-    "eslint": "^8.23.0",
+    "@studiometa/webpack-config": "^4.0.3",
+    "eslint": "^8.23.1",
     "eslint-formatter-gitlab": "^3.0.0",
     "postcss": "^8.4.16",
     "prettier": "^2.7.1",
     "prettier-plugin-twig-melody": "^0.4.6",
-    "stylelint": "^14.11.0",
+    "stylelint": "^14.12.1",
     "stylelint-formatter-gitlab": "^1.0.1",
     "tailwindcss": "^3.1.8"
   },
   "dependencies": {
-    "@studiometa/js-toolkit": "^2.4.3",
-    "@studiometa/ui": "^0.2.12"
+    "@studiometa/js-toolkit": "^2.6.0",
+    "@studiometa/ui": "^0.2.14"
   },
   "browserslist": [
     "extends @studiometa/browserslist-config"

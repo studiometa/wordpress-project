@@ -1,9 +1,9 @@
 import { defineConfig } from '@studiometa/webpack-config';
-import { tailwindcss } from '@studiometa/webpack-config/presets';
+import { tailwindcss, eslint, stylelint } from '@studiometa/webpack-config/presets';
 
 // Paths must be relative to the package.json root
 export default defineConfig({
-  presets: [tailwindcss()],
+  presets: [tailwindcss(), eslint(), stylelint()],
   src: [
     './web/wp-content/themes/studiometa/src/js/app.js',
     './web/wp-content/themes/studiometa/src/css/**/[!_]*.scss',
