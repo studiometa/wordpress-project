@@ -1,0 +1,15 @@
+{% extends 'layouts/base.twig' %}
+
+{% block content %}
+  {% for post in posts %}
+    {% include ['organisms/tease-' ~ post.post_type ~ '.twig', 'organisms/tease.twig'] %}
+  {% endfor %}
+
+  {% include 'organisms/pagination.twig' with {
+    pagination: posts.pagination({
+      show_all: false,
+      mid_size: 3,
+      end_size: 2
+    })
+  } %}
+{% endblock %}

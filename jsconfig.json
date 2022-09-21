@@ -1,0 +1,14 @@
+{
+  "include": ["web/wp-content/themes/studiometa/src/js/**/*.js"],
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "esnext",
+    "noEmit": true,
+    "checkJs": true,
+    "strict": false,
+    "noImplicitThis": true,
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom"],
+    "moduleResolution": "node"
+  }
+}

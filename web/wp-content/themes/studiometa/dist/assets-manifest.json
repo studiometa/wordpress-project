@@ -1,0 +1,53 @@
+{
+  "css/admin/editor-style.css": "css/admin/editor-style.css",
+  "css/admin/editor-style.css.map": "css/admin/editor-style.css.map",
+  "css/app.css": "css/app.css",
+  "css/app.css.map": "css/app.css.map",
+  "entrypoints": {
+    "js/app": {
+      "assets": {
+        "js": [
+          "manifest.js",
+          "vendors.js",
+          "js/app.js"
+        ]
+      }
+    },
+    "js/config": {
+      "assets": {
+        "js": [
+          "manifest.js",
+          "js/config.js"
+        ]
+      }
+    },
+    "css/admin/editor-style": {
+      "assets": {
+        "js": [
+          "manifest.js"
+        ],
+        "css": [
+          "css/admin/editor-style.css"
+        ]
+      }
+    },
+    "css/app": {
+      "assets": {
+        "js": [
+          "manifest.js"
+        ],
+        "css": [
+          "css/app.css"
+        ]
+      }
+    }
+  },
+  "js/app.js": "js/app.js",
+  "js/app.js.map": "js/app.js.map",
+  "js/config.js": "js/config.js",
+  "js/config.js.map": "js/config.js.map",
+  "manifest.js": "manifest.js",
+  "manifest.js.map": "manifest.js.map",
+  "vendors.js": "vendors.js",
+  "vendors.js.map": "vendors.js.map"
+}
