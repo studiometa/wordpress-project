@@ -1,6 +1,7 @@
 import { Base, createApp } from '@studiometa/js-toolkit';
+import { Figure } from '@studiometa/ui';
 import { isDev } from './config.js';
-import Component from './molecules/Component.js';
+import Video from './molecules/Video.js';
 
 /**
  * Main App class.
@@ -14,7 +15,8 @@ class App extends Base {
     log: isDev(),
     name: 'App',
     components: {
-      Component,
+      Video,
+      Figure,
     },
   };
 

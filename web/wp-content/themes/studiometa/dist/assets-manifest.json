@@ -1,8 +1,12 @@
 {
+  "css/admin/editor-style.ac5335125fda766e5a04.hot-update.mjs.map": "css/admin/editor-style.ac5335125fda766e5a04.hot-update.mjs.map",
   "css/admin/editor-style.css": "css/admin/editor-style.css",
-  "css/admin/editor-style.css.map": "css/admin/editor-style.css.map",
+  "css/admin/editor-style.js": "css/admin/editor-style.js",
+  "css/admin/editor-style.js.map": "css/admin/editor-style.js.map",
+  "css/app.ac5335125fda766e5a04.hot-update.mjs.map": "css/app.ac5335125fda766e5a04.hot-update.mjs.map",
   "css/app.css": "css/app.css",
-  "css/app.css.map": "css/app.css.map",
+  "css/app.js": "css/app.js",
+  "css/app.js.map": "css/app.js.map",
   "entrypoints": {
     "js/app": {
       "assets": {
@@ -13,18 +17,12 @@
         ]
       }
     },
-    "js/config": {
-      "assets": {
-        "js": [
-          "manifest.js",
-          "js/config.js"
-        ]
-      }
-    },
     "css/admin/editor-style": {
       "assets": {
         "js": [
-          "manifest.js"
+          "manifest.js",
+          "vendors.js",
+          "css/admin/editor-style.js"
         ],
         "css": [
           "css/admin/editor-style.css"
@@ -34,7 +32,9 @@
     "css/app": {
       "assets": {
         "js": [
-          "manifest.js"
+          "manifest.js",
+          "vendors.js",
+          "css/app.js"
         ],
         "css": [
           "css/app.css"
@@ -44,8 +44,7 @@
   },
   "js/app.js": "js/app.js",
   "js/app.js.map": "js/app.js.map",
-  "js/config.js": "js/config.js",
-  "js/config.js.map": "js/config.js.map",
+  "manifest.ac5335125fda766e5a04.hot-update.mjs.map": "manifest.ac5335125fda766e5a04.hot-update.mjs.map",
   "manifest.js": "manifest.js",
   "manifest.js.map": "manifest.js.map",
   "vendors.js": "vendors.js",
