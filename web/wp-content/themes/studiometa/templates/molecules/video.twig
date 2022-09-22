@@ -15,7 +15,9 @@
   <div class="video__inner relative">
     <div class="video__play" data-ref="play">
       <button class="video__play-btn">
-        {% include '@ui/atoms/Icon/Icon.twig' with { name: 'play' } %}
+        {% include '@ui/atoms/Icon/Icon.twig' with {
+          name: 'play'
+        } %}
       </button>
     </div>
     <div class="overflow-hidden relative cursor-pointer">
@@ -24,8 +26,13 @@
         alt: video_cover.alt,
         width: video_cover.width,
         height: video_cover.height,
-        attr: { data_ref: 'videoCover', class: ['transition-opacity', 'z-default', 'relative'] },
-        img_attr: { class: ['object-contain', 'h-auto'] }
+        attr: {
+          data_ref: 'videoCover',
+          class: ['transition-opacity', 'z-default', 'relative']
+        },
+        img_attr: {
+          class: ['object-contain', 'h-auto']
+        }
       } only %}
 
       <video controls

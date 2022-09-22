@@ -3,6 +3,8 @@
 {% block content %}
   {% for item in post.meta('builder') %}
     {% set block_name = item.acf_fc_layout %}
-    {% include 'organisms/' ~ block_name ~ '.twig' with { block: item } only %}
+    {% include 'organisms/' ~ block_name ~ '.twig' with {
+      block: item
+    } only %}
   {% endfor %}
 {% endblock %}

@@ -12,7 +12,6 @@
  */
 #}
 
-
 {# Instructions 
 Set size of your cover image and the video will take the same ratio.
 #}
@@ -29,7 +28,11 @@ Set size of your cover image and the video will take the same ratio.
           </span>
           {% include 'molecules/video.twig' with {
             video: block.video,
-            video_cover: { url: block.video_cover.url|resize(1215, 600), width: 1215, height: 600 },
+            video_cover: {
+              url: block.video_cover.url|resize(1215, 600),
+              width: 1215,
+              height: 600
+            },
             video_legend: block.video_legend
           } only %}
         </div>
