@@ -11,3 +11,29 @@
  * - block.video_legend {String}
  */
 #}
+
+
+{# Instructions 
+Set size of your cover image and the video will take the same ratio.
+#}
+
+<section class="block-video">
+  <div class="container">
+    <div class="grid">
+      <div class="grid-row">
+        <div class="grid-col-12 text-center">
+          <span class="content">
+            <h2>
+              {{- block.title|e('wp_kses_post')|raw -}}
+            </h2>
+          </span>
+          {% include 'molecules/video.twig' with {
+            video: block.video,
+            video_cover: { url: block.video_cover.url|resize(1215, 600), width: 1215, height: 600 },
+            video_legend: block.video_legend
+          } only %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

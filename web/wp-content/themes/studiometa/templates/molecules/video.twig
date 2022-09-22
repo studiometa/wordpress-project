@@ -1,0 +1,43 @@
+{#
+/**
+ * @file
+ * Video
+ *
+ * @params {Array}       $video
+ * @params {Array}       $video_cover
+ * @params {String}      $video_legend
+ * @params {Boolean}     $video_landscape
+ * @params {String}      $classes
+ */
+#}
+
+<div class="video {{ classes }}" data-component="Video">
+  <div class="video__inner relative">
+    <div class="video__play" data-ref="play">
+      <button class="video__play-btn">
+        {% include '@ui/atoms/Icon/Icon.twig' with { name: 'play' } %}
+      </button>
+    </div>
+    <div class="overflow-hidden relative cursor-pointer">
+      {% include '@ui/atoms/Figure/Figure.twig' with {
+        src: video_cover.url,
+        alt: video_cover.alt,
+        width: video_cover.width,
+        height: video_cover.height,
+        attr: { data_ref: 'videoCover', class: ['transition-opacity', 'z-default', 'relative'] },
+        img_attr: { class: ['object-contain', 'h-auto'] }
+      } only %}
+
+      <video controls
+        playsinline
+        class="absolute w-full h-full top-0 left-0"
+        data-ref="videoPlayer">
+        <source src="{{ video.url }}" type="{{ video.mime_type }}" />
+      </video>
+
+      {% if video_legend %}
+        <span class="video__legend">{{ video_legend }}</span>
+      {% endif %}
+    </div>
+  </div>
+</div>
