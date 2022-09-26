@@ -24,7 +24,7 @@
     "@studiometa/stylelint-config": "^3.0.0",
     "@studiometa/tailwind-config": "^2.0.2",
     "@studiometa/webpack-config": "^4.0.3",
-    "eslint": "^8.23.1",
+    "eslint": "^8.24.0",
     "eslint-formatter-gitlab": "^3.0.0",
     "postcss": "^8.4.16",
     "prettier": "^2.7.1",
