@@ -120,7 +120,7 @@ NPM Install:
   cache:
     <<: *npm_cache
   script:
-    - npm ci --no-audit --no-fund
+    - npm i --no-audit --no-fund
 
 ########################################################################
 #  END INSTALL                                                         #
