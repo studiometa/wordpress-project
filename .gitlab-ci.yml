@@ -211,6 +211,7 @@ Generate Code Quality Report:
     - chmod +x ./jq
     - cp jq /usr/bin
   script:
+    - echo '[]' > gl-default-codequality.json
     - find . -name 'gl-*-codequality.json' -exec jq -s '[.[][]]' {} + > gl-codequality.json
   artifacts:
     expire_in: 1 week
