@@ -12,14 +12,14 @@ namespace Studiometa\Blocks;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 /** Class **/
-class Video {
+class Video extends AbstractBlock {
 
 	/**
 	 * Return Field block to use in template
-	 * @return Object 
+	 * {@inheritdoc}
 	 */
-	public static function get_block() {
-		$video_block = new FieldsBuilder( 'block_video' );
+	public static function get_block( $name = 'block_video' ) {
+		$video_block = new FieldsBuilder( $name );
 		$video_block->addText( 'title', array( 'label' => 'Titre de la vidéo' ) )
 		->addFile(
 			'video',

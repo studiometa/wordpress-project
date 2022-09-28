@@ -12,14 +12,14 @@ namespace Studiometa\Blocks;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 /** Class **/
-class Wysiwyg {
+class Wysiwyg extends AbstractBlock {
 
 	/**
 	 * Return Field block to use in template
-	 * @return Object 
+	 * {@inheritdoc}
 	 */
-	public static function get_block() {
-		$wysiwyg_block = new FieldsBuilder( 'block_wysiwyg' );
+	public static function get_block( $name = 'block_wysiwyg' ) {
+		$wysiwyg_block = new FieldsBuilder( $name );
 		$wysiwyg_block->addWysiwyg(
 			'content',
 			array(

@@ -12,14 +12,14 @@ namespace Studiometa\Blocks;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 /** Class **/
-class ImageFullWidth {
+class ImageFullWidth extends AbstractBlock {
 
 	/**
 	 * Return Field block to use in template
-	 * @return Object 
+	 * {@inheritdoc}
 	 */
-	public static function get_block() {
-		$image_block = new FieldsBuilder( 'block_image_full_width' );
+	public static function get_block( $name = 'block_image_full_width' ) {
+		$image_block = new FieldsBuilder( $name );
 		$image_block->addImage(
 			'image',
 			array(

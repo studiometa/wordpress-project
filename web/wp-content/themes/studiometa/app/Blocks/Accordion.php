@@ -12,14 +12,14 @@ namespace Studiometa\Blocks;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 /** Class **/
-class Accordion {
+class Accordion extends AbstractBlock {
 
 	/**
 	 * Return Field block to use in template
-	 * @return Object 
+	 * {@inheritdoc}
 	 */
-	public static function get_block() {
-		$accordion_block = new FieldsBuilder( 'block_accordion' );
+	public static function get_block( $name = 'block_accordion' ) {
+		$accordion_block = new FieldsBuilder( $name );
 		$accordion_block->addRepeater(
 			'theme',
 			array(

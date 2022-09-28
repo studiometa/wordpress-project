@@ -12,14 +12,14 @@ namespace Studiometa\Blocks;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 /** Class **/
-class PushImageText {
+class PushImageText extends AbstractBlock {
 
 	/**
 	 * Return Field block to use in template
-	 * @return Object 
+	 * {@inheritdoc}
 	 */
-	public static function get_block() {
-		$push_block = new FieldsBuilder( 'block_push_img_txt' );
+	public static function get_block( $name = 'block_push_img_txt' ) {
+		$push_block = new FieldsBuilder( $name );
 		$push_block->addImage( 'image', array( 'label' => 'Image' ) )
 		->addWysiwyg( 'content', array( 'label' => 'Contenu' ) )
 		->addLink(
