@@ -22,8 +22,6 @@ variables:
       when: never
     - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft.*$/i
       when: never
-    - if: $CI_MERGE_REQUEST_LABELS =~ /.*work-in-progress.*/
-      when: never
     - if: '$CI_PIPELINE_SOURCE == "web"'
   npm_rules:
     - !reference [.default_rules, wip_rules]
