@@ -2,30 +2,72 @@ stages:
 - Install dependencies
 - Code Quality
 - Code Quality Report
+- Release
 
-# Global workflow config
-workflow:
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "push"'
+# External job definitions
+include:
+  - project: 'studiometa/gitlab-ci'
+    ref: master
+    file:
+      - /templates/gitlab-release.yml
 
 variables:
   # Needed for NPM Cache
   npm_config_cache: "$CI_PROJECT_DIR/.npm"
-  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/.cache/Cypress"
+
+# Global reusable rules
+.default_rules:
+  wip_rules:
+    - if: $CI_COMMIT_TITLE =~ /^WIP/i
+      when: never
+    - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft.*$/i
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+  npm_rules:
+    - !reference [.default_rules, wip_rules]
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      changes:
+        - package.json
+        - package-lock.json
+        - meta.config.mjs
+        - .eslintrc.js
+        - .prettierrc.js
+        - .stylelintrc.js
+        - tailwind.config.js
+        - .gitlab-ci.yml
+        - web/wp-content/themes/studiometa/src/**/*.{js,css,scss,vue,twig}
+  composer_rules:
+    - !reference [.default_rules, wip_rules]
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      changes:
+        - composer.json
+        - composer.lock
+        - phpcs.xml
+        - phpstan.neon
+        - .gitlab-ci.yml
+        - web/wp-content/themes/studiometa/**/*.php
+
 
 ########################################################################
 #  BEGIN CACHE                                                         #
 ########################################################################
 
 .NPM Cache: &npm_cache
-  key: "npm-cache-$CI_COMMIT_REF_SLUG"
+  key:
+    files:
+      - .nvmrc
+      - package-lock.json
+    prefix: npm-cache
   paths:
     - .npm
     - node_modules
   policy: pull-push
 
 .Composer Cache: &composer_cache
-  key: "composer-cache-$CI_COMMIT_REF_SLUG"
+  key:
+    files:
+      - composer.lock
+    prefix: composer-cache
   paths:
     - composer.phar
     - vendor
@@ -33,43 +75,25 @@ variables:
   policy: pull-push
 
 .NPM default config: &npm_default_config
-  image: node:14
+  image: node:16
   cache:
     <<: *npm_cache
     policy: pull
   rules:
-    - changes:
-        - package.json
-        - package-lock.json
-        - meta.config.js
-        - .babelrc.js
-        - .eslintrc.js
-        - .postcssrc.js
-        - .prettierrc.js
-        - .stylelintrc.js
-        - tailwind.config.js
-        - .gitlab-ci.yml
-        - web/wp-content/themes/**/*.{js,scss,vue}
+    - !reference [.default_rules, npm_rules]
 
 .Composer default config: &composer_default_config
   image: php:7.3
   before_script:
     - apt-get update
     - apt-get install -y git wget unzip zip
-    - wget https://raw.githubusercontent.com/composer/getcomposer.org/6e874537c7ff87f03f99dc8dea1f2c48e4274da3/web/installer -O - -q | php -- --quiet --version=1.10.19
-    - php -d memory_limit=-1 composer.phar install --prefer-dist --no-progress --no-suggest
+    - wget https://raw.githubusercontent.com/composer/getcomposer.org/6e874537c7ff87f03f99dc8dea1f2c48e4274da3/web/installer -O - -q | php -- --quiet
+    - php composer.phar install --no-ansi --no-interaction --no-progress --prefer-dist
   cache:
     <<: *composer_cache
     policy: pull
   rules:
-    - changes:
-        - composer.json
-        - composer.lock
-        - phpcs.xml
-        - phpstan.neon
-        - .gitlab-ci.yml
-        - bin/**/*
-        - web/wp-content/{plugins,mu-plugins,themes}/**/*.php
+    - !reference [.default_rules, composer_rules]
 
 ########################################################################
 #  END CACHE                                                           #
@@ -79,21 +103,22 @@ variables:
 #  BEGIN INSTALL                                                       #
 ########################################################################
 
-NPM Install:
-  <<: *npm_default_config
-  stage: Install dependencies
-  cache:
-    <<: *npm_cache
-  script:
-    - npm install --no-optional --no-audit --no-fund
-
 Composer Install:
   <<: *composer_default_config
   stage: Install dependencies
   cache:
     <<: *composer_cache
   script:
-    - php -d memory_limit=-1 composer.phar install --prefer-dist --no-progress --no-suggest
+    - php -r "file_exists('.env') || copy('.env.example', '.env');"
+    - php composer.phar install --no-ansi --no-interaction --no-progress --prefer-dist
+
+NPM Install:
+  <<: *npm_default_config
+  stage: Install dependencies
+  cache:
+    <<: *npm_cache
+  script:
+    - npm i --no-audit --no-fund
 
 ########################################################################
 #  END INSTALL                                                         #
@@ -151,6 +176,7 @@ StyleLint:
 
 Prettier Twig:
   <<: *npm_default_config
+  <<: *code_quality_artifacts
   stage: Code Quality
   variables:
     PRETTIER_CODE_QUALITY_REPORT: gl-prettier-codequality.json
@@ -173,6 +199,9 @@ Generate Code Quality Report:
   image: debian:stable
   stage: Code Quality Report
   when: always
+  rules:
+    - !reference [.default_rules, npm_rules]
+    - !reference [.default_rules, composer_rules]
   before_script:
     - apt-get update
     - apt-get install -y wget
@@ -180,6 +209,7 @@ Generate Code Quality Report:
     - chmod +x ./jq
     - cp jq /usr/bin
   script:
+    - echo '[]' > gl-default-codequality.json
     - find . -name 'gl-*-codequality.json' -exec jq -s '[.[][]]' {} + > gl-codequality.json
   artifacts:
     expire_in: 1 week
