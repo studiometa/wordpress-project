@@ -13,19 +13,16 @@
 #}
 
 {# Instructions 
-Set size of your cover image and the video will take the same ratio.
+  Set size of your cover image and the video will take the same ratio.
 #}
 
 <section class="block-video">
   <div class="container">
-    <div class="grid">
-      <div class="grid-row">
-        <div class="grid-col-12 text-center">
-          <span class="content">
-            <h2>
-              {{- block.title|e('wp_kses_post')|raw -}}
-            </h2>
-          </span>
+    <div class="grid grid-cols-12 gap-5">
+        <div class="col-span-12 text-center">
+          <div class="content mb-4">
+            <h2>{{- block.title|e('wp_kses_post')|raw -}}</h2>
+          </ddiv>
           {% include 'molecules/video.twig' with {
             video: block.video,
             video_cover: {
