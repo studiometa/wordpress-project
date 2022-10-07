@@ -14,5 +14,6 @@ module.exports = {
     './web/wp-content/themes/studiometa/src/js/**/*.js',
     './web/wp-content/themes/studiometa/src/js/**/*.vue',
     './web/wp-content/themes/studiometa/templates/**/*.twig',
+    'tailwind.safelist.txt'
   ],
 };
