@@ -41,7 +41,7 @@ class ACFManager implements ManagerInterface {
 			->addLayout( Wysiwyg::get_block() )
 			->addLayout( ImageFullWidth::get_block() )
 			->addLayout( Accordion::get_block() )
-			->setLocation( 'post_type', '==', 'page' );
+			->setLocation( 'page_template', '==', 'page-template-builder.php' );
 			acf_add_local_field_group( $builder_group->build() );
 	}
 }
