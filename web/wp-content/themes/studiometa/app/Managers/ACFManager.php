@@ -36,11 +36,11 @@ class ACFManager implements ManagerInterface {
 	public function register_acf_builder_group() {
 		$builder_group = new FieldsBuilder( 'builder_group', array( 'title' => 'Page builder' ) );
 		$builder_group->addFlexibleContent( 'builder', array( 'button_label' => 'Ajouter section' ) )
-			->addLayout(Video::get_block())
-			->addLayout(PushImageText::get_block())
-			->addLayout(Wysiwyg::get_block())
-			->addLayout(ImageFullWidth::get_block())
-			->addLayout(Accordion::get_block())
+			->addLayout( Video::get_block() )
+			->addLayout( PushImageText::get_block() )
+			->addLayout( Wysiwyg::get_block() )
+			->addLayout( ImageFullWidth::get_block() )
+			->addLayout( Accordion::get_block() )
 			->setLocation( 'post_type', '==', 'page' );
 			acf_add_local_field_group( $builder_group->build() );
 	}

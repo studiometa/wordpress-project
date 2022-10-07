@@ -14,8 +14,12 @@ use StoutLogic\AcfBuilder\FieldsBuilder;
 /** Interface **/
 abstract class AbstractBlock implements BlockInterface {
 	/**
-	 * Return Field block to use in template
-	 * @return {FieldsBuilder}
+	 * Get Field Block
+	 *
+	 * @param  string $name key name.
+	 * @return FieldsBuilder
 	 */
-	public static function get_block( string $name ) {}
+	public static function get_block( string $name ) {
+		return new FieldsBuilder( $name );
+	}
 }
