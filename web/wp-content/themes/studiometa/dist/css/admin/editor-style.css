@@ -542,6 +542,28 @@ video {
 .mce-content-body h4 {
   margin-bottom: 1.5rem;
 }
+.mce-content-body p a,
+.mce-content-body li a {
+  text-decoration: underline;
+  transition: opacity 0.2s;
+}
+.mce-content-body p a:hover,
+.mce-content-body li a:hover {
+  opacity: 0.75;
+}
+.mce-content-body ul li {
+  position: relative;
+  padding-left: 0.75rem;
+}
+.mce-content-body ul::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: currentColor;
+}
+.mce-content-body li + li {
+  margin-top: 0.75rem;
+}
 .mce-content-body p + p,
 .mce-content-body p + ul,
 .mce-content-body ul + p,
@@ -560,28 +582,6 @@ video {
 }
 .mce-content-body strong {
   font-weight: bold;
-}
-.mce-content-body p a,
-.mce-content-body li a {
-  text-decoration: underline;
-  transition: opacity 0.2s;
-}
-.mce-content-body p a:hover,
-.mce-content-body li a:hover {
-  opacity: 0.75;
-}
-.mce-content-body ul li {
-  position: relative;
-  padding-left: 0.75rem;
-}
-.mce-content-body ul li + li {
-  margin-top: 0.75rem;
-}
-.mce-content-body ul li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: currentColor;
 }
 .mce-content-body img {
   display: block;

@@ -445,6 +445,28 @@ video {
 .wysiwyg h4 {
   margin-bottom: 1.5rem;
 }
+.wysiwyg p a,
+.wysiwyg li a {
+  text-decoration: underline;
+  transition: opacity 0.2s;
+}
+.wysiwyg p a:hover,
+.wysiwyg li a:hover {
+  opacity: 0.75;
+}
+.wysiwyg ul li {
+  position: relative;
+  padding-left: 0.75rem;
+}
+.wysiwyg ul::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: currentColor;
+}
+.wysiwyg li + li {
+  margin-top: 0.75rem;
+}
 .wysiwyg p + p,
 .wysiwyg p + ul,
 .wysiwyg ul + p,
@@ -463,28 +485,6 @@ video {
 }
 .wysiwyg strong {
   font-weight: bold;
-}
-.wysiwyg p a,
-.wysiwyg li a {
-  text-decoration: underline;
-  transition: opacity 0.2s;
-}
-.wysiwyg p a:hover,
-.wysiwyg li a:hover {
-  opacity: 0.75;
-}
-.wysiwyg ul li {
-  position: relative;
-  padding-left: 0.75rem;
-}
-.wysiwyg ul li + li {
-  margin-top: 0.75rem;
-}
-.wysiwyg ul li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: currentColor;
 }
 .wysiwyg img {
   display: block;
