@@ -89,7 +89,10 @@ $table_prefix = getenv( 'DB_PREFIX' );
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define( 'WP_DEBUG', getenv( 'APP_DEBUG' ) === 'true' ? true : false );
+ini_set('display_errors',getenv( 'APP_DEBUG' ) === 'true' ? 'On' : 'Off');
+ini_set('error_reporting', E_ALL );
+define('WP_DEBUG', getenv( 'APP_DEBUG' ) === 'true' ? true : false);
+define('WP_DEBUG_DISPLAY', getenv( 'APP_DEBUG' ) === 'true' ? true : false);
 
 if ( getenv( 'APP_ENV' ) !== 'local' ) {
 	define( 'AUTOMATIC_UPDATER_DISABLED', true );
