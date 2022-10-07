@@ -11,29 +11,37 @@
  */
 #}
 
-<div class="video {{ classes }}" data-component="Video">
-  <div class="video__inner relative">
-    <div class="video__play" data-ref="play">
-      <button class="video__play-btn">
-        {% include '@ui/atoms/Icon/Icon.twig' with {
-          name: 'play'
-        } %}
-      </button>
-    </div>
+{# Instructions #}
+{# 
+  - Video take ratio of cover image
+  - Change play icon svg
+  - Feel free to change styles
+ #}
+
+<div data-component="Video">
+  <div class="relative">
     <div class="overflow-hidden relative cursor-pointer">
-      {% include '@ui/atoms/Figure/Figure.twig' with {
-        src: video_cover.url,
-        alt: video_cover.alt,
-        width: video_cover.width,
-        height: video_cover.height,
-        attr: {
-          data_ref: 'videoCover',
-          class: ['transition-opacity', 'z-default', 'relative']
-        },
-        img_attr: {
-          class: ['object-contain', 'h-auto']
-        }
-      } only %}
+      <div data-ref="videoCover" class="z-10 relative transition-opacity">
+        <div class="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 z-20"
+          data-ref="play">
+          {% include '@ui/atoms/Button/Button.twig' with {
+            icon: 'play',
+            icon_only: true
+          } %}
+          {% if video_legend %}
+            <span class="block mt-3">{{ video_legend }}</span>
+          {% endif %}
+        </div>
+        {% include '@ui/atoms/Figure/Figure.twig' with {
+          src: video_cover.url,
+          alt: video_cover.alt,
+          width: video_cover.width,
+          height: video_cover.height,
+          img_attr: {
+            class: ['object-contain', 'h-auto']
+          }
+        } only %}
+      </div>
 
       <video controls
         playsinline
@@ -41,10 +49,6 @@
         data-ref="videoPlayer">
         <source src="{{ video.url }}" type="{{ video.mime_type }}" />
       </video>
-
-      {% if video_legend %}
-        <span class="video__legend">{{ video_legend }}</span>
-      {% endif %}
     </div>
   </div>
 </div>
