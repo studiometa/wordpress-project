@@ -13,8 +13,8 @@ namespace Studiometa\Managers;
 use Studiometa\WPToolkit\Managers\ManagerInterface;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 use Studiometa\Blocks\Accordion;
-use Studiometa\Blocks\ImageFullWidth;
-use Studiometa\Blocks\PushImageText;
+use Studiometa\Blocks\Image;
+use Studiometa\Blocks\ImageText;
 use Studiometa\Blocks\Video;
 use Studiometa\Blocks\Wysiwyg;
 
@@ -37,9 +37,9 @@ class ACFManager implements ManagerInterface {
 		$builder_group = new FieldsBuilder( 'builder_group', array( 'title' => 'Page builder' ) );
 		$builder_group->addFlexibleContent( 'builder', array( 'button_label' => 'Ajouter section' ) )
 			->addLayout( Video::get_block() )
-			->addLayout( PushImageText::get_block() )
+			->addLayout( ImageText::get_block() )
 			->addLayout( Wysiwyg::get_block() )
-			->addLayout( ImageFullWidth::get_block() )
+			->addLayout( Image::get_block() )
 			->addLayout( Accordion::get_block() )
 			->setLocation( 'page_template', '==', 'page-template-builder.php' );
 			acf_add_local_field_group( $builder_group->build() );

@@ -1,5 +1,5 @@
 import { Base, createApp } from '@studiometa/js-toolkit';
-import { Figure } from '@studiometa/ui';
+import { Figure, Accordion } from '@studiometa/ui';
 import { isDev } from './config.js';
 import Video from './molecules/Video.js';
 
@@ -15,8 +15,9 @@ class App extends Base {
     log: isDev(),
     name: 'App',
     components: {
-      Video,
       Figure,
+      Video, // @todo lazyload
+      Accordion, // @todo lazyload
     },
   };
 

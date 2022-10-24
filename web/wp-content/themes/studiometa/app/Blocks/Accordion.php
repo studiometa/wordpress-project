@@ -21,19 +21,12 @@ class Accordion extends AbstractBlock {
 	 */
 	public static function get_block( $name = 'block_accordion' ) {
 		$accordion_block = new FieldsBuilder( $name );
-		$accordion_block->addRepeater(
-			'theme',
-			array(
-				'label'  => 'Chapitre',
-				'layout' => 'block',
-			)
-		)
-			->addText( 'theme_title', array( 'label' => 'Titre du chapitre' ) )
+		$accordion_block
+			->addText( 'title', array( 'label' => 'Titre du block' ) )
 			->addRepeater( 'list' )
-				->addText( 'list_title', array( 'label' => 'Titre' ) )
-				->addWysiwyg( 'list_content', array( 'label' => 'Contenu' ) )
-			->endRepeater()
-		->endRepeater();
+				->addText( 'title', array( 'label' => 'Titre' ) )
+				->addWysiwyg( 'content', array( 'label' => 'Contenu' ) )
+			->endRepeater();
 
 		return $accordion_block;
 	}

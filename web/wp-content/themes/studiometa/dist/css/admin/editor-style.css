@@ -304,6 +304,10 @@ video {
   max-width: 100%;
   height: auto;
 }
+html{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 *, ::before, ::after{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -398,10 +402,17 @@ video {
 }
 .container{
   width: 100%;
+  margin-right: auto;
+  margin-left: auto;
 }
-@media (min-width: 640px){
+@media (min-width: 0px){
   .container{
-    max-width: 640px;
+    max-width: 0px;
+  }
+}
+@media (min-width: 480px){
+  .container{
+    max-width: 480px;
   }
 }
 @media (min-width: 768px){
@@ -419,10 +430,73 @@ video {
     max-width: 1280px;
   }
 }
-@media (min-width: 1536px){
+@media (min-width: 1440px){
   .container{
-    max-width: 1536px;
+    max-width: 1440px;
   }
+}
+@media (min-width: 1920px){
+  .container{
+    max-width: 1920px;
+  }
+}
+@media (min-width: 2560px){
+  .container{
+    max-width: 2560px;
+  }
+}
+[data-breakpoint]::after, [data-breakpoint]::before{
+  display: none;
+}
+[data-breakpoint]::after{
+  content: 'xxs,xs,s,m,l,xl,xxl,xxxl';
+}
+[data-breakpoint]::before{
+  content: 'xxs';
+}
+@media (min-width: 0px){
+  [data-breakpoint]::before{
+    content: 'xxs';
+  }
+}
+@media (min-width: 480px){
+  [data-breakpoint]::before{
+    content: 'xs';
+  }
+}
+@media (min-width: 768px){
+  [data-breakpoint]::before{
+    content: 's';
+  }
+}
+@media (min-width: 1024px){
+  [data-breakpoint]::before{
+    content: 'm';
+  }
+}
+@media (min-width: 1280px){
+  [data-breakpoint]::before{
+    content: 'l';
+  }
+}
+@media (min-width: 1440px){
+  [data-breakpoint]::before{
+    content: 'xl';
+  }
+}
+@media (min-width: 1920px){
+  [data-breakpoint]::before{
+    content: 'xxl';
+  }
+}
+@media (min-width: 2560px){
+  [data-breakpoint]::before{
+    content: 'xxxl';
+  }
+}
+[class*="float-grid-col-"]{
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
 }
 .static{
   position: static;
@@ -502,6 +576,9 @@ video {
 .grid-cols-12{
   grid-template-columns: repeat(12, minmax(0, 1fr));
 }
+.content-center{
+  align-content: center;
+}
 .gap-5{
   gap: 1.25rem;
 }
@@ -510,6 +587,9 @@ video {
 }
 .object-contain{
   object-fit: contain;
+}
+.pb-8{
+  padding-bottom: 2rem;
 }
 .text-center{
   text-align: center;
@@ -587,4 +667,9 @@ video {
   display: block;
   width: 100%;
   height: auto;
+}
+@media (min-width: 1024px){
+  .m\:col-span-6{
+    grid-column: span 6 / span 6;
+  }
 }

@@ -1,0 +1,57 @@
+{#
+/**
+ * @file
+ * Block Image + Text
+ * Display section with image and texte on left or right
+ *
+ * Available variables:
+ * - block.image         {Object}
+ * - block.content       {Wysiwyg}
+ * - block.cta           {Object}
+ * - block.text_position {String}
+ */
+#}
+{% set content %}
+  {% if block.content %}
+    <div class="pb-8">
+      {{ block.content|e('wp_kses_post')|raw }}
+    </div>
+  {% endif %}
+
+  {% if block.cta %}
+    {% include '@ui/atoms/Button/Button.twig' with {
+      label: block.cta.title,
+      href: block.cta.url
+    } only %}
+  {% endif %}
+{% endset %}
+
+{% set image %}
+  {% include '@ui/atoms/Figure/Figure.twig' with {
+    src: block.image.url,
+    alt: block.image.alt,
+    width: block.image.width,
+    height: block.image.height
+  } only %}
+{% endset %}
+
+<section class="block-image-text">
+  <div class="container">
+    <div class="grid grid-cols-12 gap-5">
+      <div class="grid col-span-12 m:col-span-6 content-center">
+        {% if block.text_position == 'left' %}
+          {{ content }}
+        {% else %}
+          {{ image }}
+        {% endif %}
+      </div>
+      <div class="grid col-span-12 m:col-span-6 content-center">
+        {% if block.text_position == 'right' %}
+          {{ content }}
+        {% else %}
+          {{ image }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
