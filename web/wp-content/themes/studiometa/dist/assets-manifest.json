@@ -1,10 +1,10 @@
 {
+  "css/admin/editor-style.36af3b82e20e5b483fae.hot-update.mjs.map": "css/admin/editor-style.36af3b82e20e5b483fae.hot-update.mjs.map",
   "css/admin/editor-style.css": "css/admin/editor-style.css",
-  "css/admin/editor-style.d84bdb14c38b4ac91e80.hot-update.mjs.map": "css/admin/editor-style.d84bdb14c38b4ac91e80.hot-update.mjs.map",
   "css/admin/editor-style.js": "css/admin/editor-style.js",
   "css/admin/editor-style.js.map": "css/admin/editor-style.js.map",
+  "css/app.36af3b82e20e5b483fae.hot-update.mjs.map": "css/app.36af3b82e20e5b483fae.hot-update.mjs.map",
   "css/app.css": "css/app.css",
-  "css/app.d84bdb14c38b4ac91e80.hot-update.mjs.map": "css/app.d84bdb14c38b4ac91e80.hot-update.mjs.map",
   "css/app.js": "css/app.js",
   "css/app.js.map": "css/app.js.map",
   "entrypoints": {
@@ -44,9 +44,11 @@
   },
   "js/app.js": "js/app.js",
   "js/app.js.map": "js/app.js.map",
-  "manifest.d84bdb14c38b4ac91e80.hot-update.mjs.map": "manifest.d84bdb14c38b4ac91e80.hot-update.mjs.map",
+  "manifest.36af3b82e20e5b483fae.hot-update.mjs.map": "manifest.36af3b82e20e5b483fae.hot-update.mjs.map",
   "manifest.js": "manifest.js",
   "manifest.js.map": "manifest.js.map",
   "vendors.js": "vendors.js",
-  "vendors.js.map": "vendors.js.map"
+  "vendors.js.map": "vendors.js.map",
+  "web_wp-content_themes_studiometa_src_js_molecules_Video_js.js": "web_wp-content_themes_studiometa_src_js_molecules_Video_js.js",
+  "web_wp-content_themes_studiometa_src_js_molecules_Video_js.js.map": "web_wp-content_themes_studiometa_src_js_molecules_Video_js.js.map"
 }

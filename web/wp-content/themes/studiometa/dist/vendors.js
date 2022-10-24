@@ -2757,6 +2757,87 @@ console.error(err);
 
 /***/ }),
 
+/***/ "./node_modules/@studiometa/js-toolkit/helpers/importWhenVisible.js":
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ importWhenVisible)
+/* harmony export */ });
+/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/@studiometa/js-toolkit/helpers/utils.js");
+/* harmony import */ var _utils_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/@studiometa/js-toolkit/utils/is.js");
+
+
+function importWhenVisible(fn, nameOrSelectorOrElement, parent, observerOptions = {}) {
+  let ResolvedClass;
+  const resolver = (resolve, cb) => {
+    fn().then((module) => {
+      ResolvedClass = "default" in module ? module.default : module;
+      resolve(ResolvedClass);
+      if ((0,_utils_index_js__WEBPACK_IMPORTED_MODULE_0__.isFunction)(cb)) {
+        cb();
+      }
+    });
+  };
+  return new Promise((resolve) => {
+    const observer = new IntersectionObserver((entries) => {
+      const someEntriesAreVisible = entries.some((entry) => entry.isIntersecting);
+      if (someEntriesAreVisible) {
+        setTimeout(() => {
+          resolver(resolve, () => observer.disconnect());
+        }, 0);
+      }
+    }, observerOptions);
+    const elements = (0,_utils_js__WEBPACK_IMPORTED_MODULE_1__.getTargetElements)(nameOrSelectorOrElement, parent == null ? void 0 : parent.$el);
+    elements.forEach((element) => observer.observe(element));
+  });
+}
+
+
+
+if (true) {module.hot.accept(function(err) {
+if (err) {
+console.error(err);
+}
+});
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/@studiometa/js-toolkit/helpers/utils.js":
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getTargetElements": () => (/* binding */ getTargetElements)
+/* harmony export */ });
+/* harmony import */ var _Base_utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/@studiometa/js-toolkit/Base/utils.js");
+/* harmony import */ var _utils_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/@studiometa/js-toolkit/utils/is.js");
+
+
+function getTargetElements(nameOrSelectorOrElement, context) {
+  if ((0,_utils_index_js__WEBPACK_IMPORTED_MODULE_0__.isString)(nameOrSelectorOrElement)) {
+    return (0,_Base_utils_js__WEBPACK_IMPORTED_MODULE_1__.getComponentElements)(nameOrSelectorOrElement, context);
+  }
+  if (!(0,_utils_index_js__WEBPACK_IMPORTED_MODULE_0__.isArray)(nameOrSelectorOrElement)) {
+    return [nameOrSelectorOrElement];
+  }
+  return nameOrSelectorOrElement;
+}
+
+
+
+if (true) {module.hot.accept(function(err) {
+if (err) {
+console.error(err);
+}
+});
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/@studiometa/js-toolkit/services/key.js":
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
