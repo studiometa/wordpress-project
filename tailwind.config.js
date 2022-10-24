@@ -5,7 +5,7 @@
  * @default https://github.com/studiometa/tailwind-config/blob/develop/src/index.js
  */
 module.exports = {
-  presets: [require('tailwindcss/defaultConfig'), require('@studiometa/tailwind-config')],
+  presets: [require('tailwindcss/defaultConfig'), require('@studiometa/tailwind-config').config],
   // Extends the default Studio Meta Tailwind configuration here...
   // plugins: [...],
   // theme: {...},
@@ -14,6 +14,8 @@ module.exports = {
     './web/wp-content/themes/studiometa/src/js/**/*.js',
     './web/wp-content/themes/studiometa/src/js/**/*.vue',
     './web/wp-content/themes/studiometa/templates/**/*.twig',
-    'tailwind.safelist.txt'
+    './vendor/studiometa/ui/package/ui/**/*.twig',
+    './vendor/studiometa/ui/package/ui/**/*.js',
+    'tailwind.safelist.txt',
   ],
 };
