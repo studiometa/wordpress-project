@@ -35,6 +35,7 @@ class ACFManager implements ManagerInterface {
 	 */
 	public function register_acf_builder_group() {
 		$builder_group = new FieldsBuilder( 'builder_group', array( 'title' => 'Page builder' ) );
+		// @phpstan-ignore-next-line
 		$builder_group->addFlexibleContent( 'builder', array( 'button_label' => 'Ajouter section' ) )
 			->addLayout( Video::get_block() )
 			->addLayout( ImageText::get_block() )
