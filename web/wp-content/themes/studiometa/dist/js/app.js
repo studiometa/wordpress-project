@@ -9,9 +9,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _studiometa_js_toolkit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/@studiometa/js-toolkit/Base/index.js");
 /* harmony import */ var _studiometa_js_toolkit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./node_modules/@studiometa/js-toolkit/helpers/importWhenVisible.js");
-/* harmony import */ var _studiometa_js_toolkit__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./node_modules/@studiometa/js-toolkit/helpers/createApp.js");
+/* harmony import */ var _studiometa_js_toolkit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./node_modules/@studiometa/js-toolkit/helpers/createApp.js");
 /* harmony import */ var _studiometa_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./node_modules/@studiometa/ui/atoms/Figure/Figure.js");
-/* harmony import */ var _studiometa_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./node_modules/@studiometa/ui/molecules/Accordion/Accordion.js");
 /* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./web/wp-content/themes/studiometa/src/js/config.js");
 
 
@@ -27,10 +26,10 @@ App.config = {
   components: {
     Figure: _studiometa_ui__WEBPACK_IMPORTED_MODULE_2__.Figure,
     Video: (app) => (0,_studiometa_js_toolkit__WEBPACK_IMPORTED_MODULE_3__["default"])(() => __webpack_require__.e(/* import() */ "web_wp-content_themes_studiometa_src_js_molecules_Video_js").then(__webpack_require__.bind(__webpack_require__, "./web/wp-content/themes/studiometa/src/js/molecules/Video.js")), "Video", app),
-    Accordion: _studiometa_ui__WEBPACK_IMPORTED_MODULE_4__.Accordion
+    Accordion: (app) => (0,_studiometa_js_toolkit__WEBPACK_IMPORTED_MODULE_3__["default"])(() => __webpack_require__.e(/* import() */ "web_wp-content_themes_studiometa_src_js_molecules_Accordion_js").then(__webpack_require__.bind(__webpack_require__, "./web/wp-content/themes/studiometa/src/js/molecules/Accordion.js")), "Accordion", app)
   }
 };
-var app_default = (0,_studiometa_js_toolkit__WEBPACK_IMPORTED_MODULE_5__["default"])(App, document.body);
+var app_default = (0,_studiometa_js_toolkit__WEBPACK_IMPORTED_MODULE_4__["default"])(App, document.body);
 
 
 

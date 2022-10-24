@@ -1,5 +1,5 @@
 import { Base, createApp, importWhenVisible } from '@studiometa/js-toolkit';
-import { Figure, Accordion } from '@studiometa/ui';
+import { Figure } from '@studiometa/ui';
 import { isDev } from './config.js';
 
 /**
@@ -16,7 +16,8 @@ class App extends Base {
     components: {
       Figure,
       Video: (app) => importWhenVisible(() => import('./molecules/Video.js'), 'Video', app),
-      Accordion, // @todo lazyload
+      Accordion: (app) =>
+        importWhenVisible(() => import('./molecules/Accordion.js'), 'Accordion', app),
     },
   };
 
