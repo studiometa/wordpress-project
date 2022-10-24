@@ -25,11 +25,10 @@ class PushImageText extends AbstractBlock {
 		->addLink(
 			'cta',
 			array(
-				'label'             => 'Bouton CTA',
-				'instructions'      => 'Ajoute un CTA, si non renseigné il ne sera pas visible',
-				'conditional_logic' => 0,
-				'return_format'     => 'array',
-			)
+				'label'         => 'Bouton CTA',
+				'instructions'  => 'Ajoute un CTA, si non renseigné il ne sera pas visible',
+				'return_format' => 'array',
+			),
 		)
 		->addRadio(
 			'text_position',
