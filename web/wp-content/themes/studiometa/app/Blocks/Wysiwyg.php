@@ -16,7 +16,8 @@ class Wysiwyg extends AbstractBlock {
 
 	/**
 	 * Return Field block to use in template
-	 * {@inheritdoc}
+	 *
+	 * @param string $name block name.
 	 */
 	public static function get_block( $name = 'block_wysiwyg' ) {
 		$wysiwyg_block = new FieldsBuilder( $name );

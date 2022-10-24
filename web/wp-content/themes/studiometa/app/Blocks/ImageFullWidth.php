@@ -16,7 +16,8 @@ class ImageFullWidth extends AbstractBlock {
 
 	/**
 	 * Return Field block to use in template
-	 * {@inheritdoc}
+	 *
+	 * @param string $name block name.
 	 */
 	public static function get_block( $name = 'block_image_full_width' ) {
 		$image_block = new FieldsBuilder( $name );

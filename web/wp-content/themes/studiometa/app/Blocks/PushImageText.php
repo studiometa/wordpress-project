@@ -16,7 +16,8 @@ class PushImageText extends AbstractBlock {
 
 	/**
 	 * Return Field block to use in template
-	 * {@inheritdoc}
+	 *
+	 * @param string $name block name.
 	 */
 	public static function get_block( $name = 'block_push_img_txt' ) {
 		$push_block = new FieldsBuilder( $name );

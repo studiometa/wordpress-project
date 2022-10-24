@@ -16,7 +16,8 @@ class Accordion extends AbstractBlock {
 
 	/**
 	 * Return Field block to use in template
-	 * {@inheritdoc}
+	 *
+	 * @param string $name block name.
 	 */
 	public static function get_block( $name = 'block_accordion' ) {
 		$accordion_block = new FieldsBuilder( $name );
