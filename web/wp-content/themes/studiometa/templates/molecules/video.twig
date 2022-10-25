@@ -8,16 +8,13 @@
  * @params {String}      $video_legend
  * @params {Boolean}     $video_landscape
  * @params {String}      $classes
+ *
+ * Instructions:
+ *  - Video take ratio of cover image
+ *  - Change play icon svg
+ *  - Feel free to change styles
  */
 #}
-
-{# Instructions #}
-{# 
-  - Video take ratio of cover image
-  - Change play icon svg
-  - Feel free to change styles
- #}
-
 <div data-component="Video">
   <div class="relative">
     <div class="overflow-hidden relative cursor-pointer">
@@ -26,8 +23,11 @@
           data-ref="play">
           {% include '@ui/atoms/Button/Button.twig' with {
             icon: 'play',
-            icon_only: true
-          } %}
+            icon_only: true,
+            attr: {
+              aria_label: __('Lire la vidéo', 'studiometa')
+            }
+          } only %}
           {% if video_legend %}
             <span class="block mt-3">{{ video_legend }}</span>
           {% endif %}
