@@ -64,7 +64,7 @@ Une liste (non exaustive) des commandes utiles de [WPCLI](https://wp-cli.org/fr/
 | `wp plugin activate` | Activer un plugin |
 | `wp plugin deactivate` | Désactiver un plugin |
 | `wp search-replace 'http://old-domain.com/' 'http://new-domain.com/' --precise --recurse-objects --all-tables-with-prefix` | Remplacer toutes les URL's pour migrer une base de données. ⚠ Faire un backup avant de lancer cette commande, ajouter le paramètre `–dry-run` pour lancer la commande sans effectuer de changements |
-| ` wp language core install fr_FR && wp language core activate fr_FR` | Installer une nouvelle langue de back-office (changer `fr_FR` par la langue souhaitée) |
+| `wp language core install fr_FR && wp language core activate fr_FR` | Installer une nouvelle langue de back-office (changer `fr_FR` par la langue souhaitée) |
 
 
 ### Ajouter des plugins et mu-plugins
