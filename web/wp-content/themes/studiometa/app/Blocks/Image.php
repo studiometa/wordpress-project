@@ -24,7 +24,7 @@ class Image extends AbstractBlock {
 		$image_block->addImage(
 			'image',
 			array(
-				'label'        => 'Image',
+				'label'        => __( 'Image', 'studiometa' ),
 				'instructions' => 'Format HD à privilégier',
 			)
 		);

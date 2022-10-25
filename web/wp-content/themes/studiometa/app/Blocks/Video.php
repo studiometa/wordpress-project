@@ -21,26 +21,25 @@ class Video extends AbstractBlock {
 	 */
 	public static function get_block( $name = 'block_video' ) {
 		$video_block = new FieldsBuilder( $name );
-		$video_block->addText( 'title', array( 'label' => 'Titre de la vidéo' ) )
+		$video_block->addText( 'title', array( 'label' => __( 'Titre de la vidéo', 'studiometa' ) ) )
 		->addFile(
 			'video',
 			array(
 				'label'        => 'Vidéo',
-				'instructions' => 'Format MP4 à privilégier',
+				'instructions' => __( 'Format MP4 à privilégier', 'studiometa' ),
 			)
 		)
 		->addImage(
 			'video_cover',
 			array(
-				'label'        => 'Vidéo cover',
-				'instructions' => 'Image de couverture',
+				'label' => __( 'Image de couverture', 'studiometa' ),
 			)
 		)
 		->addText(
 			'video_legend',
 			array(
-				'label'        => 'Légende vidéo',
-				'instructions' => 'Caché si non renseigné',
+				'label'        => __( 'Légende vidéo', 'studiometa' ),
+				'instructions' => __( 'Caché si non renseigné', 'studiometa' ),
 			)
 		);
 

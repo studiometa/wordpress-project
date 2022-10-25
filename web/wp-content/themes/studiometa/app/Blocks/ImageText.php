@@ -21,26 +21,25 @@ class ImageText extends AbstractBlock {
 	 */
 	public static function get_block( $name = 'block_image_text' ) {
 		$push_block = new FieldsBuilder( $name );
-		$push_block->addImage( 'image', array( 'label' => 'Image' ) )
-		->addWysiwyg( 'content', array( 'label' => 'Contenu' ) )
+		$push_block->addImage( 'image', array( 'label' => __( 'Image', 'studiometa' ) ) )
+		->addWysiwyg( 'content', array( 'label' => __( 'Contenu', 'studiometa' ) ) )
 		->addLink(
 			'cta',
 			array(
-				'label'         => 'Bouton CTA',
-				'instructions'  => 'Ajoute un CTA, si non renseigné il ne sera pas visible',
+				'label'         => __( 'Bouton CTA', 'studiometa' ),
+				'instructions'  => __( 'Ajoute un CTA, si non renseigné il ne sera pas visible', 'studiometa' ),
 				'return_format' => 'array',
 			),
 		)
 		->addRadio(
 			'text_position',
 			array(
-				'label'         => 'Position du bloc texte',
-				'choices'       =>
-				array(
-					'left'  => 'Gauche',
-					'right' => 'Droite',
-				),
+				'label'         => __( 'Position du bloc texte', 'studiometa' ),
 				'default_value' => 'left',
+				'choices'       => array(
+					'left'  => __( 'Gauche', 'studiometa' ),
+					'right' => __( 'Droite', 'studiometa' ),
+				),
 			)
 		);
 

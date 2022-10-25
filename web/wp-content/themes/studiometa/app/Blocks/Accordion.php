@@ -22,10 +22,10 @@ class Accordion extends AbstractBlock {
 	public static function get_block( $name = 'block_accordion' ) {
 		$accordion_block = new FieldsBuilder( $name );
 		$accordion_block
-			->addText( 'title', array( 'label' => 'Titre du block' ) )
+			->addText( 'title', array( 'label' => __( 'Titre du block', 'studiometa' ) ) )
 			->addRepeater( 'list' )
-				->addText( 'title', array( 'label' => 'Titre' ) )
-				->addWysiwyg( 'content', array( 'label' => 'Contenu' ) )
+				->addText( 'title', array( 'label' => __( 'Titre', 'studiometa' ) ) )
+				->addWysiwyg( 'content', array( 'label' => __( 'Contenu', 'studiometa' ) ) )
 			->endRepeater();
 
 		return $accordion_block;

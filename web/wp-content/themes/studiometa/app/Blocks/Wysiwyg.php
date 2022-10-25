@@ -24,7 +24,7 @@ class Wysiwyg extends AbstractBlock {
 		$wysiwyg_block->addWysiwyg(
 			'content',
 			array(
-				'label'   => 'Contenu',
+				'label'   => __( 'Contenu', 'studiometa' ),
 				'toolbar' => 'full',
 			)
 		);
