@@ -24,11 +24,11 @@
     {% endblock %}
 
     {# Content #}
-    {% block content %}
-      <section role="main" class="main">
+    <main role="main" id="main" class="main">
+      {% block content %}
         Sorry, no content
-      </section>
-    {% endblock %}
+      {% endblock %}
+    </main>
 
     {# Footer #}
     {% block footer %}
