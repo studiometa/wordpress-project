@@ -8,7 +8,7 @@
 @import 'tailwindcss/utilities';
 
 // Main parent of the TinyMCE wysiwyg Editor.
-.mce-content-body {
+#tinymce {
   // Add nice padding.
   padding: 1.5rem !important;
 

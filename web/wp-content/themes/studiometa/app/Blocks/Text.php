@@ -12,7 +12,7 @@ namespace Studiometa\Blocks;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 /** Class **/
-class Wysiwyg extends AbstractBlock {
+class Text extends AbstractBlock {
 
 	/**
 	 * Return Field block to use in template

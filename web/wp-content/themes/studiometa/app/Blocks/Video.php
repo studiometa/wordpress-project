@@ -25,7 +25,7 @@ class Video extends AbstractBlock {
 		->addFile(
 			'video',
 			array(
-				'label'        => 'Vidéo',
+				'label'        => __( 'Vidéo', 'studiometa' ),
 				'instructions' => __( 'Format MP4 à privilégier', 'studiometa' ),
 			)
 		)

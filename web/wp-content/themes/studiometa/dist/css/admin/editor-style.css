@@ -498,6 +498,17 @@ html{
   padding-right: 0.5rem;
   padding-left: 0.5rem;
 }
+.sr-only{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
 .static{
   position: static;
 }
@@ -599,74 +610,84 @@ html{
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
-.mce-content-body {
+#tinymce {
   padding: 1.5rem !important;
   font-size: 1rem;
   line-height: 1.5rem;
 }
-.mce-content-body h1{
+#tinymce h1{
   font-size: 2.25rem;
   line-height: 2.5rem;
 }
-.mce-content-body h2{
+#tinymce h2{
   font-size: 1.875rem;
   line-height: 2.25rem;
 }
-.mce-content-body h3{
+#tinymce h3{
   font-size: 1.5rem;
   line-height: 2rem;
 }
-.mce-content-body h1,
-.mce-content-body h2,
-.mce-content-body h3,
-.mce-content-body h4 {
+#tinymce h1,
+#tinymce h2,
+#tinymce h3,
+#tinymce h4 {
   margin-bottom: 1.5rem;
 }
-.mce-content-body p a,
-.mce-content-body li a {
+#tinymce p a,
+#tinymce li a {
   text-decoration: underline;
   transition: opacity 0.2s;
 }
-.mce-content-body p a:hover,
-.mce-content-body li a:hover {
+#tinymce p a:hover,
+#tinymce li a:hover {
   opacity: 0.75;
 }
-.mce-content-body ul li {
+#tinymce ul li {
   position: relative;
   padding-left: 0.75rem;
 }
-.mce-content-body ul::before {
+#tinymce ul::before {
   content: "•";
   position: absolute;
   left: 0;
   color: currentColor;
 }
-.mce-content-body li + li {
+#tinymce li + li {
   margin-top: 0.75rem;
 }
-.mce-content-body p + p,
-.mce-content-body p + ul,
-.mce-content-body ul + p,
-.mce-content-body ul + ul {
+#tinymce p + p,
+#tinymce p + ul,
+#tinymce ul + p,
+#tinymce ul + ul {
   margin-top: 1rem;
 }
-.mce-content-body p + h1,
-.mce-content-body p + h2,
-.mce-content-body p + h3,
-.mce-content-body p + h4,
-.mce-content-body ul + h1,
-.mce-content-body ul + h2,
-.mce-content-body ul + h3,
-.mce-content-body ul + h4 {
+#tinymce p + h1,
+#tinymce p + h2,
+#tinymce p + h3,
+#tinymce p + h4,
+#tinymce ul + h1,
+#tinymce ul + h2,
+#tinymce ul + h3,
+#tinymce ul + h4 {
   margin-top: 2.5rem;
 }
-.mce-content-body strong {
+#tinymce strong {
   font-weight: bold;
 }
-.mce-content-body img {
+#tinymce img {
   display: block;
   width: 100%;
   height: auto;
+}
+.focus\:not-sr-only:focus{
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
 }
 @media (min-width: 1024px){
   .m\:col-span-6{
