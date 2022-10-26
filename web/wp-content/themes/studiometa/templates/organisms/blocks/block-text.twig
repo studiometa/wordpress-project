@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Block Text
+ * Display content from wysiwyg text
+ *
+ * @param {Array}   $block
+ * @param {Wysiwyg} $block.content  wysiwyg text
+ * @param {String}  $block_name     machine name
+ */
+#}
+<section class="block-wysiwyg">
+  <div class="container">
+    <div class="grid grid-cols-12 gap-5">
+      <div class="col-span-12">
+        <div class="wysiwyg">
+          {{ block.content|e('wp_kses_post')|raw }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

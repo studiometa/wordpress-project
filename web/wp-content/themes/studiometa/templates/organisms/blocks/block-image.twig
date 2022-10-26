@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Block Image
+ * Use https://ui.studiometa.dev/-/components/atoms/Figure/
+ * Display image
+ *
+ * @param {Array}   $block
+ * @param {Object}  $block.image   Image
+ * @param {String}  $block_name    machine name
+ */
+#}
+<section class="block-image">
+  {# @todo use Figure #}
+  <div class="container">
+    {% include '@ui/atoms/Figure/Figure.twig' with {
+      src: block.image.url,
+      alt: block.image.alt,
+      width: block.image.width,
+      height: block.image.height
+    } only %}
+  </div>
+</section>

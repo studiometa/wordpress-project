@@ -1,17 +1,9 @@
-/*------------------------------------*
-  TinyMCE Editor style
-*------------------------------------*/
+/*============================================================================*\
+  Default wysiwyg configuration
+  Feel free to change all styles
+\*============================================================================*/
 
-@import '../config';
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
-// Main parent of the TinyMCE wysiwyg Editor.
-#tinymce {
-  // Add nice padding.
-  padding: 1.5rem !important;
-
+.wysiwyg {
   @apply text-base;
 
   h1 {
