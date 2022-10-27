@@ -1,5 +1,10 @@
 # WordPress project
 
+## Initialiser un nouveau projet 
+```bash
+composer create-project studiometa/wordpress-project www.fqdn.com
+```
+
 ## Installation
 
 Cloner le dépôt :
@@ -20,6 +25,21 @@ php7.3 $(which composer) install
 # Installer les dépendances NPM avec Node 16
 nvm use 16
 npm install
+
+# Créer la base de donnée
+/vendor/bin/wp db create 
+
+# Installer WordPress 
+/vendor/bin/wp core install --url="{URL_DU_SITE}" --title="{TITLE_DU_SITE}" --admin_user="{ADMIN_USER}" --admin_email="{ADMIN_EMAIL}"
+
+# Installer la langue FR
+/vendor/bin/wp language core install fr_FR
+
+# Activer la langue FR
+/vendor/bin/wp site switch-language
+
+# Activer les plugins WordPress
+/vendor/binwp plugin activate classic-editor advanced-custom-fields-pro seo-by-rank-math
 ```
 
 ## Développement
