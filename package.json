@@ -23,7 +23,7 @@
     "@studiometa/prettier-formatter-gitlab": "^1.1.2",
     "@studiometa/stylelint-config": "^3.0.0",
     "@studiometa/tailwind-config": "^2.0.2",
-    "@studiometa/webpack-config": "^4.0.4",
+    "@studiometa/webpack-config": "^4.0.7",
     "eslint": "^8.26.0",
     "eslint-formatter-gitlab": "^3.0.0",
     "postcss": "^8.4.18",
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@studiometa/js-toolkit": "^2.6.3",
-    "@studiometa/ui": "^0.2.17"
+    "@studiometa/ui": "^0.2.18"
   },
   "browserslist": [
     "extends @studiometa/browserslist-config"
