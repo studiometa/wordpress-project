@@ -14,7 +14,7 @@
     "vlucas/phpdotenv": "^3.4",
     "johnpbloch/wordpress": "6.*",
     "timber/timber": "^1.20",
-    "studiometa/wp-toolkit": "^1.0@alpha",
+    "studiometa/wp-toolkit": "^1.0",
     "wp-media/wp-rocket": "^3.11",
     "wpackagist-plugin/classic-editor": "^1.6",
     "wpackagist-plugin/seo-by-rank-math": "^1.0",
