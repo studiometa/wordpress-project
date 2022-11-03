@@ -49,11 +49,13 @@
     ],
     "post-install-cmd": [
       "rm -rf ./web/wp/wp-content",
-      "cp config/scaffold/wp-config-sample.php web/wp-config.php"
+      "cp config/scaffold/web/wp-config.php web/wp-config.php",
+      "cp config/scaffold/web/.htaccess web/.htaccess"
     ],
     "post-update-cmd": [
       "rm -rf ./web/wp/wp-content",
-      "cp config/scaffold/wp-config-sample.php web/wp-config.php"
+      "cp config/scaffold/web/wp-config.php web/wp-config.php",
+      "cp config/scaffold/web/.htaccess web/.htaccess"
     ],
     "phpstan": "phpstan analyse --memory-limit=512M",
     "test": "echo 'No test specified' && exit 0",
