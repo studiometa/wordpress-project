@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Footer menu
+ *
+ * @param {array} $menu
+ */
+#}
+{% if menu %}
+  <ul>
+    {% for item in menu %}
+      <li class="{{ item.classes|join(' ') }}">
+        <a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
