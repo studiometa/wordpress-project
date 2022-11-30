@@ -22,7 +22,7 @@
     "stoutlogic/acf-builder": "^1.12",
     "boxuk/wp-muplugin-loader": "^2.0",
     "djboris88/twig-commented-include": "^1.2",
-    "studiometa/ui": "^0.2.17"
+    "studiometa/ui": "^0.2.23"
   },
   "require-dev": {
     "wpackagist-plugin/query-monitor": "^3.9",
