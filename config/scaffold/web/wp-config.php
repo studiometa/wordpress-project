@@ -127,6 +127,13 @@ define( 'WP_DEFAULT_THEME', 'studiometa' );
  */
 if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' === $_SERVER['HTTP_X_FORWARDED_PROTO'] ) {
 	$_SERVER['HTTPS'] = 'on';
+} else if ( isset( $_SERVER['HTTP_CF_VISITOR'] ) ) {
+	try {
+		$visitor = json_decode( $_SERVER['HTTP_CF_VISITOR'] );
+		if ( 'https' === $visitor->scheme ) {
+			$_SERVER['HTTPS'] = 'on';
+		}
+	} catch (\Exception $error) {}
 }
 
 /** Sets up WordPress vars and included files. */
