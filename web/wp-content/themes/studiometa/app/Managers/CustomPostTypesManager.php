@@ -46,17 +46,20 @@ class CustomPostTypesManager implements ManagerInterface {
 		$post_types         = get_post_types();
 		$class_map          = array();
 		$exclude_post_types = array(
+			'acf-field',
+			'acf-field-group',
 			'attachment',
-			'revision',
-			'nav_menu_item',
 			'custom_css',
 			'customize_changeset',
+			'nav_menu_item',
 			'oembed_cache',
+			'revision',
 			'user_request',
 			'wp_block',
 			'wp_template',
-			'acf-field-group',
-			'acf-field',
+			'wp_navigation',
+			'wp_template_part',
+			'wp_global_styles',
 		);
 
 		foreach ( $post_types as $key => $post_type ) {
