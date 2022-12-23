@@ -43,29 +43,29 @@ class TinyMCEManager implements ManagerInterface {
 	public function set_editor_config( $config ) {
 		$style_formats = array(
 			array(
-				'title'    => __( 'Large title' ),
+				'title'    => __( 'Titre h1' ),
 				'selector' => 'p, h1, h2, h3, h4, h5, h6',
 				'classes'  => 'type-h1',
 			),
 			array(
-				'title'    => __( 'Button' ),
-				'selector' => 'a',
-				'classes'  => 'btn',
+				'title'    => __( 'Titre h2' ),
+				'selector' => 'p, h1, h2, h3, h4, h5, h6',
+				'classes'  => 'type-h2',
 			),
-		);
-
-		$colors = array(
-			'000000', // Hexadecimal color value.
-			'Black', // Color name.
-			'ffffff',
-			'White',
+			array(
+				'title'    => __( 'Titre h3' ),
+				'selector' => 'p, h1, h2, h3, h4, h5, h6',
+				'classes'  => 'type-h3',
+			),
+			array(
+				'title'    => __( 'Titre h4' ),
+				'selector' => 'p, h1, h2, h3, h4, h5, h6',
+				'classes'  => 'type-h4',
+			),
 		);
 
 		// Add custom style_formats to TinyMCE.
 		$config['style_formats'] = wp_json_encode( $style_formats );
-
-		// Add custom colors to TinyMCE.
-		$config['textcolor_map'] = wp_json_encode( $colors );
 
 		return $config;
 	}
