@@ -53,15 +53,17 @@ Timber::$autoescape = true;
 add_action(
 	'after_setup_theme',
 	function () {
+		$assets_manager = new AssetsManager();
+
 		$managers = array(
+			$assets_manager,
 			new ThemeManager(),
 			new WordPressManager(),
 			new TwigManager(),
-			new AssetsManager(),
 			new CleanupManager(),
 			new CustomPostTypesManager(),
 			new TaxonomiesManager(),
-			new TinyMCEManager(),
+			new TinyMCEManager( $assets_manager ),
 			new ACFManager(),
 		);
 
