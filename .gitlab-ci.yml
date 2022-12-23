@@ -5,8 +5,9 @@ variables:
 # External job definitions
 include:
   - project: studiometa/gitlab-ci
-    ref: 2.0.4
+    ref: 2.x
     file:
+      - config/bot/create-merge-request.yml
       - config/node/npm-install.yml
       - config/node/eslint.yml
       - config/node/stylelint.yml
