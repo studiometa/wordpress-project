@@ -73,12 +73,9 @@ class TinyMCEManager implements ManagerInterface {
 	/**
 	 * Load a custom stylesheet for TinyMCE wysiwyg editor
 	 *
-	 * @param string $hook_suffix Plugins.
-	 * @return string
+	 * @return void
 	 */
-	public function add_editor_stylesheet( $hook_suffix ) {
+	public function add_editor_stylesheet() {
 		add_editor_style( get_template_directory_uri() . '/dist/css/admin/editor-style.css' );
-		return $hook_suffix;
 	}
-
 }
