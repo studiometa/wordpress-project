@@ -621,12 +621,6 @@ html{
 .col-span-12{
   grid-column: span 12 / span 12;
 }
-.col-span-10{
-  grid-column: span 10 / span 10;
-}
-.col-start-2{
-  grid-column-start: 2;
-}
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
@@ -666,9 +660,6 @@ html{
 .resize{
   resize: both;
 }
-.grid-flow-row-dense{
-  grid-auto-flow: row dense;
-}
 .grid-cols-12{
   grid-template-columns: repeat(12, minmax(0, 1fr));
 }
@@ -697,9 +688,6 @@ html{
 .pb-8{
   padding-bottom: 2rem;
 }
-.text-left{
-  text-align: left;
-}
 .text-center{
   text-align: center;
 }
@@ -717,14 +705,6 @@ html{
   overflow: visible;
   clip: auto;
   white-space: normal;
-}
-@media (min-width: 768px){
-  .s\:order-first{
-    order: -9999;
-  }
-  .s\:order-none{
-    order: 0;
-  }
 }
 @media (min-width: 1024px){
   .m\:order-none{
