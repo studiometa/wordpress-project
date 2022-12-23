@@ -32,13 +32,9 @@ if ( ! class_exists( 'Timber\Timber' ) ) {
 		}
 	);
 
-	add_filter(
-		'template_include',
-		function( $template ) {
-			die( 'Timber not activated.' );
-		}
-	);
-	return;
+	if ( ! is_admin() ) {
+		die( 'Timber not activated.' );
+	}
 }
 
 $timber = new Timber();
