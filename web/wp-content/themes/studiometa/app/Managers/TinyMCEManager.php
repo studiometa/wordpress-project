@@ -8,9 +8,26 @@
 namespace Studiometa\Managers;
 
 use Studiometa\WPToolkit\Managers\ManagerInterface;
+use Studiometa\WPToolkit\Managers\AssetsManager;
 
 /** Class */
 class TinyMCEManager implements ManagerInterface {
+	/**
+	 * Assets manager.
+	 *
+	 * @var AssetsManager
+	 */
+	private $assets_manager;
+
+	/**
+	 * Class constructor.
+	 *
+	 * @param AssetsManager $assets_manager Assets manager.
+	 */
+	public function __construct( AssetsManager $assets_manager ) {
+		$this->assets_manager = $assets_manager;
+	}
+
 	/**
 	 * {@inheritdoc}
 	 */
@@ -76,6 +93,10 @@ class TinyMCEManager implements ManagerInterface {
 	 * @return void
 	 */
 	public function add_editor_stylesheet() {
-		add_editor_style( get_template_directory_uri() . '/dist/css/admin/editor-style.css' );
+		$stylesheet = $this->assets_manager->webpack_manifest->asset( 'css/admin/editor-style.css' );
+
+		if ( $stylesheet ) {
+			add_editor_style( $stylesheet );
+		}
 	}
 }
