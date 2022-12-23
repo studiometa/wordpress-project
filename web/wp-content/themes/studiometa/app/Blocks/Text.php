@@ -19,7 +19,7 @@ class Text extends AbstractBlock {
 	 *
 	 * @param string $name block name.
 	 */
-	public static function get_block( $name = 'block_wysiwyg' ) {
+	public static function get_block( $name = 'block_text' ) {
 		$wysiwyg_block = new FieldsBuilder( $name );
 		$wysiwyg_block->addWysiwyg(
 			'content',
