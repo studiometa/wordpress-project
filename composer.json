@@ -1,6 +1,5 @@
 {
   "name": "studiometa/wordpress-project",
-  "version": "2.0.2",
   "type": "project",
   "authors": [
     {
@@ -14,7 +13,7 @@
     "vlucas/phpdotenv": "^3.4",
     "johnpbloch/wordpress": "6.*",
     "timber/timber": "^1.20",
-    "studiometa/wp-toolkit": "^1.0@alpha",
+    "studiometa/wp-toolkit": "^1.0",
     "wp-media/wp-rocket": "^3.11",
     "wpackagist-plugin/classic-editor": "^1.6",
     "wpackagist-plugin/seo-by-rank-math": "^1.0",
@@ -22,7 +21,7 @@
     "stoutlogic/acf-builder": "^1.12",
     "boxuk/wp-muplugin-loader": "^2.0",
     "djboris88/twig-commented-include": "^1.2",
-    "studiometa/ui": "^0.2.7"
+    "studiometa/ui": "^0.2.23"
   },
   "require-dev": {
     "wpackagist-plugin/query-monitor": "^3.9",
@@ -49,11 +48,13 @@
     ],
     "post-install-cmd": [
       "rm -rf ./web/wp/wp-content",
-      "cp config/scaffold/wp-config-sample.php web/wp-config.php"
+      "cp config/scaffold/web/wp-config.php web/wp-config.php",
+      "cp config/scaffold/web/.htaccess web/.htaccess"
     ],
     "post-update-cmd": [
       "rm -rf ./web/wp/wp-content",
-      "cp config/scaffold/wp-config-sample.php web/wp-config.php"
+      "cp config/scaffold/web/wp-config.php web/wp-config.php",
+      "cp config/scaffold/web/.htaccess web/.htaccess"
     ],
     "phpstan": "phpstan analyse --memory-limit=512M",
     "test": "echo 'No test specified' && exit 0",

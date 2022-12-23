@@ -1,0 +1,39 @@
+{#
+/**
+ * @file
+ * Block Video
+ * Display simple video
+ *
+ * @param {Array}   $block
+ * @param {String}  $block.title         Text
+ * @param {Object}  $block.video         File
+ * @param {Object}  $block.video_cover   Image
+ * @param {Object}  $block.video_legend  Text
+ * @param {String}  $block_name          machine name
+ *
+ * Instructions:
+ * Set size of your cover image and the video will take the same ratio.
+ */
+#}
+<section class="block-video">
+  <div class="container">
+    <div class="grid grid-cols-12 gap-5">
+        <div class="col-span-12 text-center">
+          <div class="content mb-4">
+            <h2>{{- block.title|e('wp_kses_post')|raw -}}</h2>
+          </div>
+
+          {% include 'molecules/video.twig' with {
+            video: block.video,
+            video_cover: {
+              url: block.video_cover.url|resize(1215, 600),
+              width: 1215,
+              height: 600
+            },
+            video_legend: block.video_legend
+          } only %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

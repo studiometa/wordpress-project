@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Page Template Builder
+ *
+ * @param {array} $builder
+ */
+#}
+{% extends 'layouts/base.twig' %}
+
+{% block content %}
+  <div class="container mx-auto">
+    {% for item in builder %}
+      {% set block_name =
+        item.acf_fc_layout|replace({
+          '_': '-'
+        })
+      %}
+      {% include [
+        'organisms/blocks/' ~ block_name ~ '.twig',
+        'organisms/blocks/default.twig'
+      ] with {
+        block: item,
+        block_name: block_name
+      } only %}
+    {% endfor %}
+  </div>
+{% endblock %}

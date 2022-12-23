@@ -1,13 +1,16 @@
-<header class="header">
-  <div class="wrapper">
-    <h1 class="hdr-logo" role="banner">
-      <a class="hdr-logo-link" href="{{ site.url }}" rel="home">{{ site.name }}</a>
-    </h1>
+{#
+/**
+ * @file
+ * Header
+ *
+ */
+#}
+<header class="header" role="banner">
+  <a class="" href="{{ site.url }}" rel="home">{{ site.name }}</a>
 
-    <nav class="nav-main" role="navigation">
-      {% include 'organisms/menu.twig' with {
-        menu: menu.get_items
-      } %}
-    </nav>
-  </div>
+  <nav class="nav" role="navigation" aria-label="{{ __('Navigation principale') }}">
+    {% include 'organisms/menu.twig' with {
+      menu: menu.get_items
+    } only %}
+  </nav>
 </header>

@@ -3,10 +3,7 @@
 
 # Assets loaded on all templates
 all:
-  css:
-    app: dist/css/app.css
-  js:
-    manifest: dist/manifest.js
-    vendors: dist/vendors.js
-    app: dist/js/app.js
+  entries:
+    - css/app.scss
+    - js/app.js
 

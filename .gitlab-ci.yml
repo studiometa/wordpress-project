@@ -1,223 +1,39 @@
-stages:
-- Install dependencies
-- Code Quality
-- Code Quality Report
-- Release
+variables:
+  NODE_VERSION: 16
+  PHP_VERSION: '7.3'
 
 # External job definitions
 include:
-  - project: 'studiometa/gitlab-ci'
-    ref: master
+  - project: studiometa/gitlab-ci
+    ref: 2.x
     file:
-      - /templates/gitlab-release.yml
+      - config/bot/create-merge-request.yml
+      - config/node/npm-install.yml
+      - config/node/eslint.yml
+      - config/node/stylelint.yml
+      - config/node/prettier-twig.yml
+      - config/php/composer-install.yml
+      - config/php/phpcs.yml
+      - config/php/phpstan.yml
+      - config/release/gitlab.yml
 
-variables:
-  # Needed for NPM Cache
-  npm_config_cache: "$CI_PROJECT_DIR/.npm"
-
-# Global reusable rules
-.default_rules:
-  wip_rules:
-    - if: $CI_COMMIT_TITLE =~ /^WIP/i
-      when: never
-    - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft.*$/i
-      when: never
-    - if: '$CI_PIPELINE_SOURCE == "web"'
-  npm_rules:
-    - !reference [.default_rules, wip_rules]
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-      changes:
-        - package.json
-        - package-lock.json
-        - meta.config.mjs
-        - .eslintrc.js
-        - .prettierrc.js
-        - .stylelintrc.js
-        - tailwind.config.js
-        - .gitlab-ci.yml
-        - web/wp-content/themes/studiometa/src/**/*.{js,css,scss,vue,twig}
-  composer_rules:
-    - !reference [.default_rules, wip_rules]
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-      changes:
-        - composer.json
-        - composer.lock
-        - phpcs.xml
-        - phpstan.neon
-        - .gitlab-ci.yml
-        - web/wp-content/themes/studiometa/**/*.php
-
-
-########################################################################
-#  BEGIN CACHE                                                         #
-########################################################################
-
-.NPM Cache: &npm_cache
-  key:
-    files:
-      - .nvmrc
-      - package-lock.json
-    prefix: npm-cache
-  paths:
-    - .npm
-    - node_modules
-  policy: pull-push
-
-.Composer Cache: &composer_cache
-  key:
-    files:
-      - composer.lock
-    prefix: composer-cache
-  paths:
-    - composer.phar
-    - vendor
-    - web/wp
-  policy: pull-push
-
-.NPM default config: &npm_default_config
-  image: node:16
-  cache:
-    <<: *npm_cache
-    policy: pull
-  rules:
-    - !reference [.default_rules, npm_rules]
-
-.Composer default config: &composer_default_config
-  image: php:7.3
-  before_script:
-    - apt-get update
-    - apt-get install -y git wget unzip zip
-    - wget https://raw.githubusercontent.com/composer/getcomposer.org/6e874537c7ff87f03f99dc8dea1f2c48e4274da3/web/installer -O - -q | php -- --quiet
-    - php composer.phar install --no-ansi --no-interaction --no-progress --prefer-dist
-  cache:
-    <<: *composer_cache
-    policy: pull
-  rules:
-    - !reference [.default_rules, composer_rules]
-
-########################################################################
-#  END CACHE                                                           #
-########################################################################
-
-########################################################################
-#  BEGIN INSTALL                                                       #
-########################################################################
-
-Composer Install:
-  <<: *composer_default_config
-  stage: Install dependencies
-  cache:
-    <<: *composer_cache
-  script:
-    - php -r "file_exists('.env') || copy('.env.example', '.env');"
-    - php composer.phar install --no-ansi --no-interaction --no-progress --prefer-dist
-
-NPM Install:
-  <<: *npm_default_config
-  stage: Install dependencies
-  cache:
-    <<: *npm_cache
-  script:
-    - npm i --no-audit --no-fund
-
-########################################################################
-#  END INSTALL                                                         #
-########################################################################
-
-########################################################################
-#  BEGIN CODE QUALITY                                                  #
-########################################################################
-
-.Code Quality Artifacts: &code_quality_artifacts
-  artifacts:
-    when: on_failure
-    expire_in: 1 week
-    untracked: true
-
-PHPCS:
-  <<: *composer_default_config
-  <<: *code_quality_artifacts
-  stage: Code Quality
-  needs:
-    - Composer Install
-  script:
-    - php composer.phar run phpcs -- --report=\\Satesh\\Phpcs\\GitLabReport --report-file=gl-phpcs-codequality.json
-
-PHPStan:
-  <<: *composer_default_config
-  <<: *code_quality_artifacts
-  stage: Code Quality
-  needs:
-    - Composer Install
-  script:
-    - php composer.phar run phpstan -- --error-format=gitlab > gl-phpstan-codequality.json
-
-ESLint:
-  <<: *npm_default_config
-  <<: *code_quality_artifacts
-  stage: Code Quality
+node_eslint:
   variables:
-    ESLINT_CODE_QUALITY_REPORT: gl-eslint-codequality.json
-  needs:
-    - NPM Install
-  script:
-    - npm run lint:scripts -- --format gitlab
+    ESLINT_ARGS: 'web/wp-content/themes/studiometa/src/**/*.{js,jsx}'
 
-StyleLint:
-  <<: *npm_default_config
-  <<: *code_quality_artifacts
-  stage: Code Quality
+node_stylelint:
   variables:
-    STYLELINT_CODE_QUALITY_REPORT: gl-stylelint-codequality.json
-  needs:
-    - NPM Install
-  script:
-    - npm run lint:styles -- --custom-formatter=node_modules/stylelint-formatter-gitlab
+    STYLELINT_ARGS: 'web/wp-content/themes/studiometa/src/**/*.scss'
 
-Prettier Twig:
-  <<: *npm_default_config
-  <<: *code_quality_artifacts
-  stage: Code Quality
+node_prettier_twig:
   variables:
-    PRETTIER_CODE_QUALITY_REPORT: gl-prettier-codequality.json
-  needs:
-    - NPM Install
-  script:
-    - ./node_modules/.bin/prettier-formatter-gitlab 'npm run lint:templates'
+    PRETTIER_ARGS: 'web/wp-content/themes/studiometa/templates/**/*.twig'
 
+php_phpcs:
+  variables:
+    PHPCS_ARGS: --extensions=php --standard=./phpcs.xml --report=\\Satesh\\Phpcs\\GitLabReport --report-file=gl-phpcs-codequality.json
 
-########################################################################
-#  END CODE QUALITY                                                    #
-########################################################################
-
-
-########################################################################
-#  START CODE QUALITY REPORT                                           #
-########################################################################
-
-Generate Code Quality Report:
-  image: debian:stable
-  stage: Code Quality Report
-  when: always
-  rules:
-    - !reference [.default_rules, npm_rules]
-    - !reference [.default_rules, composer_rules]
-  before_script:
-    - apt-get update
-    - apt-get install -y wget
-    - wget -qO jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
-    - chmod +x ./jq
-    - cp jq /usr/bin
-  script:
-    - echo '[]' > gl-default-codequality.json
-    - find . -name 'gl-*-codequality.json' -exec jq -s '[.[][]]' {} + > gl-codequality.json
-  artifacts:
-    expire_in: 1 week
-    paths:
-      - gl-codequality.json
-    reports:
-      codequality: gl-codequality.json
-
-########################################################################
-#  END CODE QUALITY REPORT                                             #
-########################################################################
+php_phpstan:
+  variables:
+    PHP_EXEC_CMD_ARGS: -e 'XDEBUG_MODE=off'
+    PHPSTAN_ARGS: analyse --error-format=gitlab > gl-phpstan-codequality.json

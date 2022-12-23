@@ -18,17 +18,25 @@
   </head>
 
   <body class="{{ body_class }}" data-breakpoint>
+    {% include '@ui/atoms/Button/Button.twig' with {
+      href: '#main',
+      label: __('Aller au contenu principal', 'studiometa'),
+      attr: {
+        class: 'sr-only focus:not-sr-only'
+      }
+    } only %}
+
     {# Header #}
     {% block header %}
       {% include 'organisms/header.twig' %}
     {% endblock %}
 
     {# Content #}
-    {% block content %}
-      <section role="main" class="main">
+    <main role="main" id="main" class="main">
+      {% block content %}
         Sorry, no content
-      </section>
-    {% endblock %}
+      {% endblock %}
+    </main>
 
     {# Footer #}
     {% block footer %}
