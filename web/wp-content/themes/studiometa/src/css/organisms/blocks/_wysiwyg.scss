@@ -41,13 +41,13 @@
     li {
       position: relative;
       padding-left: theme('spacing.3');
-    }
 
-    &::before {
-      content: '•';
-      position: absolute;
-      left: 0;
-      color: currentColor;
+      &::before {
+        content: '•';
+        position: absolute;
+        left: 0;
+        color: currentColor;
+      }
     }
   }
 

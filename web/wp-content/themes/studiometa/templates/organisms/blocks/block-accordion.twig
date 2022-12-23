@@ -15,23 +15,22 @@
 #}
 <section class="block-accordion">
   <div class="container">
-    <h3>
-      {{ block.title }}
-    </h3>
-
-    {% embed '@ui/molecules/Accordion/Accordion.twig'
-      with {
-        items: block.list
-      }
-    %}
-      {% block title %}
-        {{ item.title }}
-      {% endblock %}
-      {% block content %}
-        <div>
-          {{ item.content|e('wp_kses_post')|raw }}
-        </div>
-      {% endblock %}
-    {% endembed %}
+    <h3>{{ block.title }}</h3>
+    <div class="border border-black">
+      {% embed '@ui/molecules/Accordion/Accordion.twig'
+        with {
+          items: block.list
+        }
+      %}
+        {% block title %}
+          {{ item.title }}
+        {% endblock %}
+        {% block content %}
+          <div class="wysiwyg p-8">
+            {{ item.content|e('wp_kses_post')|raw }}
+          </div>
+        {% endblock %}
+      {% endembed %}
+    </div>
   </div>
 </section>

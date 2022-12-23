@@ -532,7 +532,7 @@ html{
   position: relative;
   padding-left: 0.75rem;
 }
-.wysiwyg ul::before {
+.wysiwyg ul li::before {
   content: "•";
   position: absolute;
   left: 0;
@@ -612,8 +612,20 @@ html{
 .z-20{
   z-index: 20;
 }
+.order-last{
+  order: 9999;
+}
+.order-none{
+  order: 0;
+}
 .col-span-12{
   grid-column: span 12 / span 12;
+}
+.col-span-10{
+  grid-column: span 10 / span 10;
+}
+.col-start-2{
+  grid-column-start: 2;
 }
 .mx-auto{
   margin-left: auto;
@@ -654,6 +666,9 @@ html{
 .resize{
   resize: both;
 }
+.grid-flow-row-dense{
+  grid-auto-flow: row dense;
+}
 .grid-cols-12{
   grid-template-columns: repeat(12, minmax(0, 1fr));
 }
@@ -666,11 +681,24 @@ html{
 .overflow-hidden{
   overflow: hidden;
 }
+.border{
+  border-width: 1px;
+}
+.border-black{
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
 .object-contain{
   object-fit: contain;
 }
+.p-8{
+  padding: 2rem;
+}
 .pb-8{
   padding-bottom: 2rem;
+}
+.text-left{
+  text-align: left;
 }
 .text-center{
   text-align: center;
@@ -690,7 +718,18 @@ html{
   clip: auto;
   white-space: normal;
 }
+@media (min-width: 768px){
+  .s\:order-first{
+    order: -9999;
+  }
+  .s\:order-none{
+    order: 0;
+  }
+}
 @media (min-width: 1024px){
+  .m\:order-none{
+    order: 0;
+  }
   .m\:col-span-6{
     grid-column: span 6 / span 6;
   }
