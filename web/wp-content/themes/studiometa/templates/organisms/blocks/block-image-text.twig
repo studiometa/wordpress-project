@@ -39,7 +39,15 @@
 <section class="block-image-text">
   <div class="container">
     <div class="grid grid-cols-12 gap-5">
-      <div class="grid col-span-12 m:col-span-6 content-center">
+      <div class="grid col-span-12 m:col-span-6 content-center {{
+                html_classes(
+                  [
+                    {
+                      'order-last m:order-none': (block.text_position == 'left')
+                    }
+                  ]
+                )
+                }}">
         {% if block.text_position == 'left' %}
           {{ content }}
         {% else %}
