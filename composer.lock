@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "00e245c39cbb6c515df5e59c6eeeef95",
+    "content-hash": "75e1503cc9813e1cc7ca9f9e84961a7e",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -1202,16 +1202,16 @@
         },
         {
             "name": "studiometa/ui",
-            "version": "0.2.26",
+            "version": "0.2.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/studiometa/ui.git",
-                "reference": "f24815014411101a41613c934b25e048ffa3129a"
+                "reference": "b967e07b998141353873bbe9bc443f93e2da846e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/studiometa/ui/zipball/f24815014411101a41613c934b25e048ffa3129a",
-                "reference": "f24815014411101a41613c934b25e048ffa3129a",
+                "url": "https://api.github.com/repos/studiometa/ui/zipball/b967e07b998141353873bbe9bc443f93e2da846e",
+                "reference": "b967e07b998141353873bbe9bc443f93e2da846e",
                 "shasum": ""
             },
             "require": {
@@ -1239,9 +1239,9 @@
             "description": "A set of opiniated, unstyled and accessible components.",
             "support": {
                 "issues": "https://github.com/studiometa/ui/issues",
-                "source": "https://github.com/studiometa/ui/tree/0.2.26"
+                "source": "https://github.com/studiometa/ui/tree/0.2.28"
             },
-            "time": "2023-01-30T15:13:33+00:00"
+            "time": "2023-02-09T10:17:50+00:00"
         },
         {
             "name": "studiometa/webpack-config",
@@ -2428,15 +2428,15 @@
         },
         {
             "name": "wpackagist-plugin/seo-by-rank-math",
-            "version": "1.0.107.3",
+            "version": "1.0.108",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/seo-by-rank-math/",
-                "reference": "tags/1.0.107.3"
+                "reference": "tags/1.0.108"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.107.3.zip"
+                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.108.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -3760,16 +3760,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.9.14",
+            "version": "1.9.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "e5fcc96289cf737304286a9b505fbed091f02e58"
+                "reference": "204e459e7822f2c586463029f5ecec31bb45a1f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/e5fcc96289cf737304286a9b505fbed091f02e58",
-                "reference": "e5fcc96289cf737304286a9b505fbed091f02e58",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/204e459e7822f2c586463029f5ecec31bb45a1f2",
+                "reference": "204e459e7822f2c586463029f5ecec31bb45a1f2",
                 "shasum": ""
             },
             "require": {
@@ -3799,7 +3799,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.9.14"
+                "source": "https://github.com/phpstan/phpstan/tree/1.9.17"
             },
             "funding": [
                 {
@@ -3815,7 +3815,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-01-19T10:47:09+00:00"
+            "time": "2023-02-08T12:25:00+00:00"
         },
         {
             "name": "psr/container",
