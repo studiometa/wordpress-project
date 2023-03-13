@@ -53,7 +53,7 @@ abstract class Repository {
 		/**
 		 * Cached results.
 		 *
-		 * @var mixed[]
+		 * @var false|mixed[]
 		 */
 		$cached_results = wp_cache_get( $cache_key, __CLASS__ );
 
