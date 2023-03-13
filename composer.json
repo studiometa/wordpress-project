@@ -17,7 +17,7 @@
     "wp-media/wp-rocket": "^3.11",
     "wpackagist-plugin/classic-editor": "^1.6",
     "wpackagist-plugin/seo-by-rank-math": "^1.0",
-    "studiometa/advanced-custom-fields-pro": "^5.12",
+    "studiometa/advanced-custom-fields-pro": "^6.0.6",
     "stoutlogic/acf-builder": "^1.12",
     "boxuk/wp-muplugin-loader": "^2.0",
     "djboris88/twig-commented-include": "^1.2",
