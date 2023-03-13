@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a187cd907aae7dd68c52e2487b21e30f",
+    "content-hash": "5b552b57ea613c8e2fb2f1dbab149698",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -1123,16 +1123,16 @@
         },
         {
             "name": "studiometa/advanced-custom-fields-pro",
-            "version": "5.12.2",
+            "version": "6.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/studiometa/advanced-custom-fields-pro.git",
-                "reference": "131163d9acc8b2c381540549644c679ec9e01033"
+                "reference": "1559fdf3731dea01d9f1019c912167eb4f818682"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/studiometa/advanced-custom-fields-pro/zipball/131163d9acc8b2c381540549644c679ec9e01033",
-                "reference": "131163d9acc8b2c381540549644c679ec9e01033",
+                "url": "https://api.github.com/repos/studiometa/advanced-custom-fields-pro/zipball/1559fdf3731dea01d9f1019c912167eb4f818682",
+                "reference": "1559fdf3731dea01d9f1019c912167eb4f818682",
                 "shasum": ""
             },
             "require": {
@@ -1153,9 +1153,9 @@
             "description": "Customize WordPress with powerful, professional and intuitive fields.",
             "support": {
                 "issues": "https://github.com/studiometa/advanced-custom-fields-pro/issues",
-                "source": "https://github.com/studiometa/advanced-custom-fields-pro/tree/5.12.2"
+                "source": "https://github.com/studiometa/advanced-custom-fields-pro/tree/6.0.6"
             },
-            "time": "2022-06-22T08:43:38+00:00"
+            "time": "2023-01-16T15:13:17+00:00"
         },
         {
             "name": "studiometa/twig-toolkit",
