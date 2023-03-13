@@ -35,7 +35,7 @@ class StudiometaPluginDisabler {
 
 		$plugins_to_disable = array_filter( explode( ',', $plugins_to_disable_raw ) );
 
-		if ( empty( $plugins_to_disable ) || ! is_array( $plugins_to_disable ) ) {
+		if ( empty( $plugins_to_disable ) ) {
 			return;
 		}
 
