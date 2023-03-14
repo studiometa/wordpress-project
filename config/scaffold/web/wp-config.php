@@ -24,21 +24,21 @@ if ( ! file_exists( dirname( __DIR__ ) . '/vendor/autoload.php' ) ) {
 
 require_once dirname( __DIR__ ) . '/vendor/autoload.php';
 
-$dotenv = Dotenv\Dotenv::create( dirname( __DIR__ ) );
+$dotenv = Dotenv\Dotenv::createUnsafeImmutable( dirname( __DIR__ ) );
 $dotenv->load();
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', getenv( 'DB_DATABASE' ) );
+define( 'DB_NAME', $_ENV['DB_DATABASE'] );
 
 /** MySQL database username */
-define( 'DB_USER', getenv( 'DB_USERNAME' ) );
+define( 'DB_USER', $_ENV['DB_USERNAME'] );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', getenv( 'DB_PASSWORD' ) );
+define( 'DB_PASSWORD', $_ENV['DB_PASSWORD'] );
 
 /** MySQL hostname */
-define( 'DB_HOST', getenv( 'DB_HOST' ) );
+define( 'DB_HOST', $_ENV['DB_HOST'] );
 
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
@@ -47,7 +47,7 @@ define( 'DB_CHARSET', 'utf8' );
 define( 'DB_COLLATE', '' );
 
 /** Limit the number of revisions store in the Database */
-define( 'WP_POST_REVISIONS', getenv( 'WP_POST_REVISIONS' ) ? (int) getenv( 'WP_POST_REVISIONS' ) : 3 );
+define( 'WP_POST_REVISIONS', $_ENV['WP_POST_REVISIONS'] ? (int) $_ENV['WP_POST_REVISIONS'] : 3 );
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -59,15 +59,14 @@ define( 'WP_POST_REVISIONS', getenv( 'WP_POST_REVISIONS' ) ? (int) getenv( 'WP_P
  * @since 2.6.0
  */
 
-define( 'AUTH_KEY', getenv( 'AUTH_KEY' ) );
-define( 'SECURE_AUTH_KEY', getenv( 'SECURE_AUTH_KEY' ) );
-define( 'LOGGED_IN_KEY', getenv( 'LOGGED_IN_KEY' ) );
-define( 'NONCE_KEY', getenv( 'NONCE_KEY' ) );
-define( 'AUTH_SALT', getenv( 'AUTH_SALT' ) );
-define( 'SECURE_AUTH_SALT', getenv( 'SECURE_AUTH_SALT' ) );
-define( 'LOGGED_IN_SALT', getenv( 'LOGGED_IN_SALT' ) );
-define( 'NONCE_SALT', getenv( 'NONCE_SALT' ) );
-/**#@-*/
+define( 'AUTH_KEY', $_ENV['AUTH_KEY'] );
+define( 'SECURE_AUTH_KEY', $_ENV['SECURE_AUTH_KEY'] );
+define( 'LOGGED_IN_KEY', $_ENV['LOGGED_IN_KEY'] );
+define( 'NONCE_KEY', $_ENV['NONCE_KEY'] );
+define( 'AUTH_SALT', $_ENV['AUTH_SALT'] );
+define( 'SECURE_AUTH_SALT', $_ENV['SECURE_AUTH_SALT'] );
+define( 'LOGGED_IN_SALT', $_ENV['LOGGED_IN_SALT'] );
+define( 'NONCE_SALT', $_ENV['NONCE_SALT'] );
 
 /**
  * WordPress Database Table prefix.
@@ -75,7 +74,7 @@ define( 'NONCE_SALT', getenv( 'NONCE_SALT' ) );
  * You can have multiple installations in one database if you give each a unique
  * prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix = getenv( 'DB_PREFIX' );
+$table_prefix = $_ENV['DB_PREFIX'];
 
 /**
  * For developers: WordPress debugging mode.
@@ -89,10 +88,10 @@ $table_prefix = getenv( 'DB_PREFIX' );
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define( 'WP_DEBUG', getenv( 'APP_DEBUG' ) === 'true' ? true : false );
-define( 'WP_DEBUG_DISPLAY', getenv( 'APP_DEBUG' ) === 'true' ? true : false );
+define( 'WP_DEBUG', 'true' === $_ENV['APP_DEBUG'] ? true : false );
+define( 'WP_DEBUG_DISPLAY', 'true' === $_ENV['APP_DEBUG'] ? true : false );
 
-if ( getenv( 'APP_ENV' ) !== 'local' ) {
+if ( 'local' !== $_ENV['APP_ENV'] ) {
 	define( 'AUTOMATIC_UPDATER_DISABLED', true );
 	define( 'DISALLOW_FILE_EDIT', true );
 	define( 'DISALLOW_FILE_MODS', true );
@@ -106,7 +105,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /** Automatically set paths */
-define( 'WP_HOME', ( getenv( 'APP_SSL' ) === 'true' ? 'https://' : 'http://' ) . getenv( 'APP_HOST' ) );
+define( 'WP_HOME', ( 'true' === $_ENV['APP_SSL'] ? 'https://' : 'http://' ) . $_ENV['APP_HOST'] );
 define( 'WP_SITEURL', WP_HOME . '/wp' );
 
 /** Configure directory paths if WP core is in a different directory */
@@ -114,9 +113,9 @@ define( 'WP_CONTENT_URL', WP_HOME . '/wp-content' );
 define( 'WP_CONTENT_DIR', realpath( ABSPATH . '../wp-content/' ) );
 
 /* WP Rocket config */
-define( 'WP_ROCKET_EMAIL', getenv( 'WP_ROCKET_EMAIL' ) );
-define( 'WP_ROCKET_KEY', getenv( 'WP_ROCKET_KEY' ) );
-define( 'WP_CACHE', getenv( 'WP_CACHE' ) === 'true' );
+define( 'WP_ROCKET_EMAIL', $_ENV['WP_ROCKET_EMAIL'] );
+define( 'WP_ROCKET_KEY', $_ENV['WP_ROCKET_KEY'] );
+define( 'WP_CACHE', 'true' === $_ENV['WP_CACHE'] );
 
 /* Set default theme */
 define( 'WP_DEFAULT_THEME', 'studiometa' );
@@ -127,7 +126,7 @@ define( 'WP_DEFAULT_THEME', 'studiometa' );
  */
 if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' === $_SERVER['HTTP_X_FORWARDED_PROTO'] ) {
 	$_SERVER['HTTPS'] = 'on';
-} else if ( isset( $_SERVER['HTTP_CF_VISITOR'] ) ) {
+} elseif ( isset( $_SERVER['HTTP_CF_VISITOR'] ) ) {
 	try {
 		$visitor = json_decode( $_SERVER['HTTP_CF_VISITOR'] );
 		if ( 'https' === $visitor->scheme ) {

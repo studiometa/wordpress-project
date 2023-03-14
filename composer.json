@@ -10,7 +10,7 @@
   "license": "MIT",
   "require": {
     "php": "^7.3",
-    "vlucas/phpdotenv": "^3.4",
+    "vlucas/phpdotenv": "^5.5.0",
     "johnpbloch/wordpress": "6.*",
     "timber/timber": "^1.20",
     "studiometa/wp-toolkit": "^1.0",
