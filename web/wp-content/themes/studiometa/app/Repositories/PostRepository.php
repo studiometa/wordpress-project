@@ -59,7 +59,7 @@ class PostRepository extends Repository {
 			'order'          => 'DESC',
 		);
 
-		if ( is_array( $exclude ) && count( $exclude ) > 0 ) {
+		if ( ! empty( $exclude ) ) {
 			$params['post__not_in'] = $exclude;
 		}
 
