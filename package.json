@@ -14,6 +14,13 @@
     "fix:styles": "npm run lint:styles -- --fix",
     "fix:templates": "npm run lint:templates -- --write"
   },
+  "imports": {
+    "#css/*": "./web/wp-content/themes/studiometa/src/css/*",
+    "#fonts/*": "./web/wp-content/themes/studiometa/src/fonts/*",
+    "#js/*": "./web/wp-content/themes/studiometa/src/js/*",
+    "#svg/*": "./web/wp-content/themes/studiometa/src/svg/*",
+    "#theme/*": "./web/wp-content/themes/studiometa/src/*"
+  },
   "author": "Studio Meta <agence@studiometa.fr> (https://www.studiometa.fr)",
   "license": "MIT",
   "devDependencies": {

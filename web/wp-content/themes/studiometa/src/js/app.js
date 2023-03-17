@@ -1,6 +1,6 @@
 import { Base, createApp, importWhenVisible } from '@studiometa/js-toolkit';
 import { Figure } from '@studiometa/ui';
-import { isDev } from './config.js';
+import { isDev } from '#js/config.js';
 
 /**
  * Main App class.

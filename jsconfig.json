@@ -1,6 +1,13 @@
 {
   "include": ["web/wp-content/themes/studiometa/src/js/**/*.js"],
   "compilerOptions": {
+    "paths": {
+      "#css/*": ["./web/wp-content/themes/studiometa/src/css/*"],
+      "#fonts/*": ["./web/wp-content/themes/studiometa/src/fonts/*"],
+      "#js/*": ["./web/wp-content/themes/studiometa/src/js/*"],
+      "#svg/*": ["./web/wp-content/themes/studiometa/src/svg/*"],
+      "#theme/*": ["web/wp-content/themes/studiometa/src/*"]
+    },
     "target": "es2015",
     "module": "esnext",
     "noEmit": true,

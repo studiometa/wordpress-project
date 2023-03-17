@@ -2,18 +2,18 @@
 \*============================================================================*/
 
 @import 'tailwindcss/base';
-@import './base';
+@import '#css/base';
 
 /* Components
 \*============================================================================*/
 
 @import 'tailwindcss/components';
-@import './atoms';
-@import './molecules';
-@import './organisms';
+@import '#css/atoms';
+@import '#css/molecules';
+@import '#css/organisms';
 
 /* Utilities
 \*============================================================================*/
 
 @import 'tailwindcss/utilities';
-@import './utilities';
+@import '#css/utilities';
