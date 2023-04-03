@@ -66,7 +66,7 @@ add_action(
 			new TaxonomiesManager(),
 			new TinyMCEManager( $assets_manager ),
 			new ACFManager(),
-			new AdminManager,
+			new AdminManager(),
 		);
 
 		ManagerFactory::init( $managers );
