@@ -16,6 +16,7 @@ use Studiometa\Managers\ThemeManager;
 use Studiometa\Managers\TinyMCEManager;
 use Studiometa\Managers\TwigManager;
 use Studiometa\Managers\WordPressManager;
+use Studiometa\Managers\AdminManager;
 use Studiometa\WPToolkit\Managers\AssetsManager;
 use Studiometa\WPToolkit\Managers\CleanupManager;
 use Studiometa\WPToolkit\Managers\ManagerFactory;
@@ -65,6 +66,7 @@ add_action(
 			new TaxonomiesManager(),
 			new TinyMCEManager( $assets_manager ),
 			new ACFManager(),
+			new AdminManager,
 		);
 
 		ManagerFactory::init( $managers );
