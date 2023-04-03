@@ -7,7 +7,7 @@
 
 namespace Studiometa\Managers;
 
-use Studiometa\Managers\ManagerInterface;
+use Studiometa\WPToolkit\Managers\ManagerInterface;
 
 /** Class */
 class AdminManager implements ManagerInterface {
