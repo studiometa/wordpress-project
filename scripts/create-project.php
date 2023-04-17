@@ -4,7 +4,8 @@ require __DIR__ . '/functions/autoload.php';
 
 use function Studiometa\WPInstaller\{getSalts, randomChars, randomNumber, updateFile, readFile, runCommands};
 
-$name = basename( dirname( __DIR__ ) );
+$name       = basename( dirname( __DIR__ ) );
+$short_name = current( explode( '.', str_replace( 'www.', '', $name ) ) );
 
 if ( readFile( 'README.md' )[0] !== "# WordPress project\n" ) {
 	echo "\nProject already created.";
@@ -24,6 +25,13 @@ updateFile(
 	[
 		0 => sprintf( 'name: %s', $name ),
 	]
+);
+
+updateFile(
+	'.gitlab-ci.yml',
+	array(
+		3 => sprintf( '  DDEV_PROJECT_NAME: %s', $short_name ),
+	)
 );
 
 updateFile(
@@ -63,7 +71,6 @@ $salts = getSalts();
 updateFile(
 	'.env',
 	[
-		0  => sprintf( 'APP_HOST=%s.ddev.site', $name ),
 		1  => 'APP_ENV=local',
 		2  => 'APP_DEBUG=true',
 		3  => 'APP_SSL=true',

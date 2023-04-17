@@ -1,6 +1,7 @@
 variables:
   NODE_VERSION: 16
   PHP_VERSION: '7.3'
+  DDEV_PROJECT_NAME: wordpress-project
 
 # External job definitions
 include:
@@ -8,6 +9,7 @@ include:
     ref: 2.x
     file:
       - config/bot/create-merge-request.yml
+      - config/bot/gitflow-release-auto-tag.yml
       - config/node/npm-install.yml
       - config/node/eslint.yml
       - config/node/stylelint.yml
@@ -15,6 +17,8 @@ include:
       - config/php/composer-install.yml
       - config/php/phpcs.yml
       - config/php/phpstan.yml
+      - config/deploy/ddev/preprod.yml
+      - config/deploy/ddev/preview.yml
       - config/release/gitlab.yml
 
 node_eslint:
