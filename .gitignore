@@ -45,3 +45,6 @@
 .env
 .htpasswd
 /web/wp-config.php
+
+# Theme dynamic assets
+/web/wp-content/themes/studiometa/dist/
