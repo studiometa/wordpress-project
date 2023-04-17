@@ -71,7 +71,6 @@ $salts = getSalts();
 updateFile(
 	'.env',
 	[
-		0  => sprintf( 'APP_HOST=%s.ddev.site', $name ),
 		1  => 'APP_ENV=local',
 		2  => 'APP_DEBUG=true',
 		3  => 'APP_SSL=true',
