@@ -8,6 +8,7 @@ include:
     ref: 2.x
     file:
       - config/bot/create-merge-request.yml
+      - config/bot/gitflow-release-auto-tag.yml
       - config/node/npm-install.yml
       - config/node/eslint.yml
       - config/node/stylelint.yml
