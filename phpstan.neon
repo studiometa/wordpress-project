@@ -8,6 +8,8 @@ includes:
     - vendor/szepeviktor/phpstan-wordpress/extension.neon
 parameters:
     level: max
+    cache:
+      nodesByStringCountMax: 512
     inferPrivatePropertyTypeFromConstructor: true
     checkMissingIterableValueType: false
     reportUnmatchedIgnoredErrors: false

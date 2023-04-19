@@ -30,6 +30,8 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
           tools: composer:${{ matrix.composer-versions }}
+        env:
+          COMPOSER_AUTH_JSON: ${{ secrets.COMPOSER_AUTH_JSON }}
 
       - name: Get composer cache directory
         id: composer-cache
@@ -60,6 +62,8 @@ jobs:
         with:
           php-version: '7.3'
           tools: composer:v2
+        env:
+          COMPOSER_AUTH_JSON: ${{ secrets.COMPOSER_AUTH_JSON }}
 
       - name: Get composer cache directory
         id: composer-cache
