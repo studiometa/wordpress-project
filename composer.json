@@ -17,7 +17,7 @@
     "wp-media/wp-rocket": "^3.11",
     "wpackagist-plugin/classic-editor": "^1.6",
     "wpackagist-plugin/seo-by-rank-math": "^1.0",
-    "studiometa/advanced-custom-fields-pro": "^6.0.6",
+    "studiometa/advanced-custom-fields-pro": "^6.1.4",
     "stoutlogic/acf-builder": "^1.12",
     "boxuk/wp-muplugin-loader": "^2.0",
     "djboris88/twig-commented-include": "^1.2",
@@ -37,6 +37,10 @@
     "mikehaertl/php-shellcommand": "^1.6"
   },
   "repositories": [
+    {
+      "type": "composer",
+      "url": "https://gitlab.studiometa.dev/api/v4/group/73/-/packages/composer/"
+    },
     {
       "type": "composer",
       "url": "https://wpackagist.org"
