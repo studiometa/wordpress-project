@@ -34,7 +34,7 @@
     "tailwindcss": "^3.3.1"
   },
   "dependencies": {
-    "@studiometa/js-toolkit": "^2.10.0",
+    "@studiometa/js-toolkit": "^2.10.2",
     "@studiometa/ui": "^0.2.31"
   },
   "browserslist": [
