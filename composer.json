@@ -62,7 +62,7 @@
     ],
     "phpstan": "phpstan analyse --memory-limit=512M",
     "test": "echo 'No test specified' && exit 0",
-    "phpcs": "phpcs -s --colors --extensions=php --standard=./phpcs.xml"
+    "phpcs": "phpcs --cache -p -s --colors --extensions=php --standard=./phpcs.xml"
   },
   "config": {
     "optimize-autoloader": true,
