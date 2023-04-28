@@ -13,7 +13,7 @@ include:
       - config/node/npm-install.yml
       - config/node/eslint.yml
       - config/node/stylelint.yml
-      - config/node/prettier-twig.yml
+      - config/node/prettier.yml
       - config/php/composer-install.yml
       - config/php/phpcs.yml
       - config/php/phpstan.yml
@@ -29,7 +29,7 @@ node_stylelint:
   variables:
     STYLELINT_ARGS: 'web/wp-content/themes/studiometa/src/**/*.scss'
 
-node_prettier_twig:
+node_prettier:
   variables:
     PRETTIER_ARGS: 'web/wp-content/themes/studiometa/templates/**/*.twig'
 
