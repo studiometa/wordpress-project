@@ -37,7 +37,3 @@ php_phpcs:
   variables:
     PHPCS_ARGS: --extensions=php --standard=./phpcs.xml --report=\\Satesh\\Phpcs\\GitLabReport --report-file=gl-phpcs-codequality.json
 
-php_phpstan:
-  variables:
-    PHP_EXEC_CMD_ARGS: -e 'XDEBUG_MODE=off'
-    PHPSTAN_ARGS: analyse --error-format=gitlab > gl-phpstan-codequality.json
