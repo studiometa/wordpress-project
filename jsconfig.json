@@ -9,6 +9,6 @@
     "noImplicitThis": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "moduleResolution": "node"
+    "moduleResolution": "bundler"
   }
 }
